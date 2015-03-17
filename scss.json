@@ -1,0 +1,5 @@
+{
+  "includePaths": [
+    "public/vendor/foundation/scss"
+  ]
+}

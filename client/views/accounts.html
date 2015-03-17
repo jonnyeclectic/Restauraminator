@@ -1,0 +1,51 @@
+<template name="createAccount">
+  <form>
+    <fieldset>
+      <legend>{{_ "createAccount"}}</legend>
+      {{> alert}}
+      <label class="email">
+        <span>{{_ "emailAddress"}}</span>
+        <input name="email" placeholder="{{_ "emailAddress"}}" type="email">
+      </label>
+      <label class="password">
+        <span>{{_ "password"}}</span>
+        <input name="password" placeholder="{{_ "password"}}" type="password">
+      </label>
+      <label class="storeName">
+        <span>{{_ "storeName"}}</span>
+        <input name="storeName" placeholder="{{_ "storeName"}}" type="text">
+      </label>
+      <button type="submit">{{_ "createAccount"}}</button>
+    </fieldset>
+  </form>
+</template>
+
+<template name="signIn">
+  <form>
+    <fieldset>
+      <legend>{{_ "signIn"}}</legend>
+      <label class="email">
+        <span>{{_ "emailAddress"}}</span>
+        <input name="email" placeholder="{{_ "emailAddress"}}" type="email">
+      </label>
+      <label class="password">
+        <span>{{_ "password"}}</span>
+        <input name="password" placeholder="{{_ "password"}}" type="password">
+      </label>
+      <button type="submit">{{_ "signIn"}}</button>
+    </fieldset>
+  </form>
+</template>
+
+<template name="signOut">
+  <form>
+    <fieldset>
+      <legend>{{_ "signOut"}}: {{userIdentity currentUser._id}}</legend>
+      <button type="submit">{{_ "signOut"}}</button>
+    </fieldset>
+  </form>
+</template>
+
+<template name="alert">
+  <span>{{alert}}</span>
+</template>

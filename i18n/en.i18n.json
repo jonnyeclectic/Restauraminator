@@ -1,0 +1,12 @@
+{
+  "title": "Restauraminator",
+  "subtitle": "Create an online storefront for your restaurant.",
+
+  "createAccount": "Create account",
+  "signIn": "Sign in",
+  "signOut": "Sign out",
+
+  "emailAddress": "Email address",
+  "password": "Password",
+  "storeName": "Store name"
+}
