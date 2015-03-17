@@ -1,3 +1,10 @@
 Meteor.startup(function() {
-  process.env.MAIL_URL = 'smtp://restauraminator%40gmail.com:WbDLYizvVHe2LB3P@smtp.gmail.com:25';
+  var smtp = {
+    username: 'restauraminator@gmail.com',
+    password: 'WbDLYizvVHe2LB3P',
+    server:   'smtp.gmail.com',
+    port: 25
+  }
+
+  process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 });

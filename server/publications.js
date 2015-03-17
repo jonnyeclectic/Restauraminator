@@ -5,11 +5,15 @@ Meteor.publish('userData', function() {
       _id: currentUser
     }, {
       fields: {
-        "emails.address[0]": 1,
-        "profile": 1
+        "emails.address[0]": true,
+        "profile": true
       }
     });
   } else {
     return this.ready();
   }
+});
+
+Meteor.publish('store', function(id) {
+  return Stores.find({ _id: id });
 });

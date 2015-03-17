@@ -10,7 +10,5 @@ fourseven:scss
 tap:i18n
 aldeed:collection2
 accounts-password
-http
 email
 meteorhacks:ssr
-check

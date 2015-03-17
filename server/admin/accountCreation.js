@@ -1,15 +1,15 @@
 Accounts.onCreateUser(function(options, user) {
-  Meteor.call('sendWelcomeEmail', user.emails[0].address, function(error) {
-    if (error)
-      console.log(error);
-  });
-
   Meteor.call('addStore', {
     _id: 'test',
     owner: user._id,
     name: options.profile.storeName
   });
-
+/*
+  Meteor.call('sendWelcomeEmail', user.emails[0].address, function(error) {
+    if (error)
+      console.log(error);
+  });
+*/
   if (options.profile)
     user.profile = options.profile;
 
