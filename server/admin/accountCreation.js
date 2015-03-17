@@ -4,12 +4,12 @@ Accounts.onCreateUser(function(options, user) {
     owner: user._id,
     name: options.profile.storeName
   });
-
-  Meteor.call('sendWelcomeEmail', user.emails[0].address, options.profile.storeName, function(error) {
+/*
+  Meteor.call('sendWelcomeEmail', user.emails[0].address, function(error) {
     if (error)
       console.log(error);
   });
-
+*/
   if (options.profile)
     user.profile = options.profile;
 
@@ -17,13 +17,12 @@ Accounts.onCreateUser(function(options, user) {
 });
 
 Meteor.methods({
-  sendWelcomeEmail: function(email, storeName) {
+  sendWelcomeEmail: function(email) {
     check(email, String);
 
     SSR.compileTemplate('welcomeEmail', Assets.getText('email/welcomeEmail.html'));
     var emailTemplate = SSR.render('welcomeEmail', {
-      email: email,
-      storeName: storeName
+      email: email
     });
 
     return Email.send({

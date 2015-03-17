@@ -13,3 +13,7 @@ Meteor.publish('userData', function() {
     return this.ready();
   }
 });
+
+Meteor.publish('store', function(id) {
+  return Stores.find({ _id: id });
+});
