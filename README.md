@@ -4,7 +4,7 @@
 
 ## About
 
-Restauraminator is a Meteor based commerce platform for restaurants!
+Restauraminator is a Meteor based commerce platform for restaurants.
 
 ## File Structure
 
