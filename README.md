@@ -2,6 +2,10 @@
 
 > A restaurant focused commerce platform.
 
+## About
+
+Restauraminator is a Meteor based commerce platform for restaurants.
+
 ## File Structure
 
 ```bash
