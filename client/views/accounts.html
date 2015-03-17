@@ -2,7 +2,6 @@
   <form>
     <fieldset>
       <legend>{{_ "createAccount"}}</legend>
-      {{> alert}}
       <label class="email">
         <span>{{_ "emailAddress"}}</span>
         <input name="email" placeholder="{{_ "emailAddress"}}" type="email">
@@ -16,6 +15,7 @@
         <input name="storeName" placeholder="{{_ "storeName"}}" type="text">
       </label>
       <button type="submit">{{_ "createAccount"}}</button>
+      {{> alert}}
     </fieldset>
   </form>
 </template>
