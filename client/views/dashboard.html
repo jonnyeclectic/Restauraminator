@@ -1,0 +1,33 @@
+<template name="dashboard">
+  <h1>Dashboard: {{name}}</h1>
+  <a href="{{pathFor 'store' _id=this._id}}">Link to storefront</a>
+  {{> createProduct}}
+  <h2>Products</h2>
+  <ul>
+    {{#each products}}
+      {{> product}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="createProduct">
+  <form>
+    <fieldset>
+      <legend>{{_ "createProduct"}}</legend>
+      <label>
+        <span>{{_ "productName"}}</span>
+        <input name="productName" type="text">
+      </label>
+      <label>
+        <span>{{_ "shortDescription"}}</span>
+        <input name="shortDescription" type="text">
+      </label>
+      <label>
+        <span>{{_ "longDescription"}}</span>
+        <textarea name="shortDescription"></textarea>
+      </label>
+      <button type="submit">{{_ "createProduct"}}</button>
+      {{> alert}}
+    </fieldset>
+  </form>
+</template>

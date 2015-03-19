@@ -55,6 +55,7 @@ Template.signIn.events({
     Meteor.loginWithPassword(event.target.email.value, event.target.password.value, function(error) {
       if (error)
         console.log(error.reason);
+      Router.go('dashboard');
     });
     return false;
   }

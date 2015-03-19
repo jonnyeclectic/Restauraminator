@@ -3,6 +3,7 @@
   <p>{{_ "subtitle"}}</p>
 
   {{#if currentUser}}
+    <a href="{{pathFor 'dashboard'}}">{{_ "dashboard"}}</a>
     {{> signOut}}
   {{else}}
     {{> createAccount}}

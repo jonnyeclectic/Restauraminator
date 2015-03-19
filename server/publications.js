@@ -17,3 +17,11 @@ Meteor.publish('userData', function() {
 Meteor.publish('store', function(id) {
   return Stores.find({ _id: id });
 });
+
+Meteor.publish('adminData', function() {
+  return Stores.find({ owner: this.userId });
+});
+
+Meteor.publish('products', function(storeId) {
+  return Products.find({ storeId: storeId });
+});
