@@ -1,5 +1,5 @@
 // Schema
-productSchema = new SimpleSchema({
+Schemas.Products = new SimpleSchema({
   _id: {
     type: String,
     index: true,
@@ -26,15 +26,15 @@ productSchema = new SimpleSchema({
 });
 
 // Collection
-Products = new Meteor.Collection('products');
-Products.attachSchema(productSchema);
+Collections.Products = new Meteor.Collection('products');
+Collections.Products.attachSchema(Schemas.Products);
 
 // Methods
 Meteor.methods({
   createProduct: function(options) {
     var storeId = Stores.findOne({ owner: Meteor.userId() })._id;
 
-    Products.insert({
+    Collections.Products.insert({
       storeId: storeId,
       name: options.name,
       isVisible: options.isVisible

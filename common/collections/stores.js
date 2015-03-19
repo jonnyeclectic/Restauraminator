@@ -1,5 +1,5 @@
 // Schema
-storeSchema = new SimpleSchema({
+Schemas.Stores = new SimpleSchema({
   _id: {
     type: String,
     index: true,
@@ -18,13 +18,13 @@ storeSchema = new SimpleSchema({
 });
 
 // Collection
-Stores = new Meteor.Collection('stores');
-Stores.attachSchema(storeSchema);
+Collections.Stores = new Meteor.Collection('stores');
+Collections.Stores.attachSchema(Schemas.Stores);
 
 // Methods
 Meteor.methods({
   createStore: function(options) {
-    Stores.insert({
+    Collections.Stores.insert({
       owner: options.owner,
       name: options.name
     });

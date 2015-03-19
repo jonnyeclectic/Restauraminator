@@ -14,5 +14,7 @@
   "createProduct": "Create product",
   "productName": "Product name",
   "shortDescription": "Short description",
-  "longDescription": "Long description"
+  "longDescription": "Long description",
+
+  "storefront": "Storefront"
 }

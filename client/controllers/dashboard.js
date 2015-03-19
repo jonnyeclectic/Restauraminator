@@ -1,10 +1,3 @@
-Template.dashboard.helpers({
-  products: function() {
-    Meteor.subscribe("products", this._id);
-    return Products.find();
-  }
-});
-
 Template.createProduct.events({
   'submit': function(event) {
     var product = {

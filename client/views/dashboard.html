@@ -1,6 +1,6 @@
 <template name="dashboard">
-  <h1>Dashboard: {{name}}</h1>
-  <a href="{{pathFor 'store' _id=this._id}}">Link to storefront</a>
+  <h1>{{_ "dashboard"}}: {{store.name}}</h1>
+  <a href="{{pathFor 'store' _id=this.store._id}}">{{_ "storefront"}}</a>
   {{> createProduct}}
   <h2>Products</h2>
   <ul>
