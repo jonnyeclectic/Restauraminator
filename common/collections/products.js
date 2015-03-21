@@ -32,7 +32,7 @@ Collections.Products.attachSchema(Schemas.Products);
 // Methods
 Meteor.methods({
   createProduct: function(options) {
-    var storeId = Stores.findOne({ owner: Meteor.userId() })._id;
+    var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
 
     Collections.Products.insert({
       storeId: storeId,

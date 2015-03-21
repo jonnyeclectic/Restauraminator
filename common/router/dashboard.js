@@ -1,4 +1,3 @@
-// dashboard
 DashboardPageController = BaseController.extend({
   waitOn: function() {
     this.adminDataSubscription = Meteor.subscribe('adminData');
