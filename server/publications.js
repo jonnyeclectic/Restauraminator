@@ -15,5 +15,13 @@ Meteor.publish('userData', function() {
 });
 
 Meteor.publish('store', function(id) {
-  return Stores.find({ _id: id });
+  return Collections.Stores.find({ _id: id });
+});
+
+Meteor.publish('adminData', function() {
+  return Collections.Stores.find({ owner: this.userId });
+});
+
+Meteor.publish('products', function(storeId) {
+  return Collections.Products.find({ storeId: storeId });
 });

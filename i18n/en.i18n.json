@@ -8,5 +8,13 @@
 
   "emailAddress": "Email address",
   "password": "Password",
-  "storeName": "Store name"
+  "storeName": "Store name",
+
+  "dashboard": "Dashboard",
+  "createProduct": "Create product",
+  "productName": "Product name",
+  "shortDescription": "Short description",
+  "longDescription": "Long description",
+
+  "storefront": "Storefront"
 }

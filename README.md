@@ -14,11 +14,13 @@ clinet/controllers/     # logic for views
 client/helpers/         # helper functionality for views
 client/views/           # view templates
 
+common/                 # common code for client and server
+common/collections/     # code for database collections
+common/router/          # router code
+
 i18n/                   # strings
 
-lib/                    # common code for client and server
-lib/collections/        # code for database collections
-lib/router/             # router code
+lib/                    # definitions
 
 private/                # private assets inaccessible to the client
 

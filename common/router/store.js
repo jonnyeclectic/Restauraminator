@@ -1,9 +1,7 @@
 StorePageController = BaseController.extend({
   waitOn: function() {
     this.storeSubscription = Meteor.subscribe('store', this.params._id);
-  },
-  store: function() {
-    return Stores.findOne({ _id: this.params._id });
+    this.productsSubscription = Meteor.subscribe('products', this.params._id);
   },
   onBeforeAction: function() {
     if (!this.store() && this.storeSubscription.ready()) {
@@ -13,7 +11,17 @@ StorePageController = BaseController.extend({
     }
   },
   data: function() {
-    return this.store();
+    return {
+      store: this.store(),
+      products: this.products()
+    };
+  },
+
+  store: function() {
+    return Collections.Stores.findOne();
+  },
+  products: function() {
+    return Collections.Products.find();
   }
 });
 

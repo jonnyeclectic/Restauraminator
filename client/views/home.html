@@ -1,10 +1,12 @@
 <template name="home">
-  <h1>{{_ "title"}}</h1>
-  <p>{{_ "subtitle"}}</p>
-
   {{#if currentUser}}
+    <h1>{{_ "title"}}</h1>
+    <a href="{{pathFor 'dashboard'}}">{{_ "dashboard"}}</a>
     {{> signOut}}
   {{else}}
+    <h1>{{_ "title"}}</h1>
+    <p>{{_ "subtitle"}}</p>
+
     {{> createAccount}}
     {{> signIn}}
   {{/if}}
