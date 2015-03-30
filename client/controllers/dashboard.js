@@ -2,7 +2,7 @@ Template.createProduct.events({
   'submit': function(event) {
     var product = {
       name: event.target.productName.value.trim(),
-      shortDescription: event.target.productshortDescription.value.trim(),
+      shortDescription: event.target.shortDescription.value.trim(),
       isVisible: true
     };
 
