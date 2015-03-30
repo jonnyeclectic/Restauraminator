@@ -5,13 +5,13 @@ Template.createProduct.events({
       isVisible: true
     };
 
-   /* var shortDespcription = {
-      sDescription: event.target.productshortDes.value.trim(),
+    var shortDespcription = {
+      sDescription: event.target.productsDescription.value.trim(),
       isVisible: true
 
-    };*/
+    };
 
-    Meteor.call('createProduct', product);
+    Meteor.call('createProduct', product, shortDespcription);
 
     return false;
   }
