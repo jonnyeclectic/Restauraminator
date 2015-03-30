@@ -26,7 +26,8 @@ Meteor.methods({
   createStore: function(options) {
     Collections.Stores.insert({
       owner: options.owner,
-      name: options.name
+      name: options.name,
+      shortDescription: options.shortDescription
     });
   }
 });
