@@ -2,16 +2,17 @@ Template.createProduct.events({
   'submit': function(event) {
     var product = {
       name: event.target.productName.value.trim(),
+      shortDespcription: event.target.productshortDescription.value.trim(),
       isVisible: true
     };
 
-    var shortDespcription = {
+   /* var shortDespcription = {
       sDescription: event.target.productsDescription.value.trim(),
       isVisible: true
 
-    };
+    };*/
 
-    Meteor.call('createProduct', product, shortDespcription);
+    Meteor.call('createProduct', product);
 
     return false;
   }
