@@ -37,6 +37,7 @@ Meteor.methods({
     Collections.Products.insert({
       storeId: storeId,
       name: options.name,
+      shortDescription: options.shortDescription,
       isVisible: options.isVisible
     });
   }
