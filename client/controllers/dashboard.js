@@ -12,7 +12,7 @@ Template.createProduct.events({
 
     };*/
 
-    Meteor.call('createProduct', product, shortDescription);
+    Meteor.call('createProduct', product);
 
     return false;
   }
