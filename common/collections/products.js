@@ -12,8 +12,7 @@ Schemas.Products = new SimpleSchema({
     type: String
   },
   shortDescription: {
-    type: String,
-    optional: true
+    type: String
   },
   description: {
     type: String,
