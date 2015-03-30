@@ -11,10 +11,6 @@ Schemas.Stores = new SimpleSchema({
   name: {
     type: String
   },
-  shortDescription{
-    type: String,
-    optional: true
-  },
   description: {
     type: String,
     optional: true
