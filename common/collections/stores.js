@@ -11,6 +11,10 @@ Schemas.Stores = new SimpleSchema({
   name: {
     type: String
   },
+  shortDescription{
+    type: String,
+    optional: true
+  },
   description: {
     type: String,
     optional: true
@@ -27,7 +31,6 @@ Meteor.methods({
     Collections.Stores.insert({
       owner: options.owner,
       name: options.name,
-      shortDescription: options.shortDescription
     });
   }
 });
