@@ -22,6 +22,9 @@ Schemas.Products = new SimpleSchema({
     type: Boolean,
     index: 1
   }
+  foodPicture:{
+    type: File
+  }
 });
 
 // Collection
@@ -38,6 +41,7 @@ Meteor.methods({
       name: options.name,
       shortDescription: options.shortDescription,
       longDescription: options.longDescription,
+      foodPicture: options.foodPicture,
       isVisible: options.isVisible
     });
   }
