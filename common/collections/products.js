@@ -14,7 +14,7 @@ Schemas.Products = new SimpleSchema({
   shortDescription: {
     type: String
   },
-  description: {
+  longDescription: {
     type: String,
     optional: true
   },
@@ -37,6 +37,7 @@ Meteor.methods({
       storeId: storeId,
       name: options.name,
       shortDescription: options.shortDescription,
+      longDescription: options.longDescription,
       isVisible: options.isVisible
     });
   }
