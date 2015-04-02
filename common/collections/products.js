@@ -11,10 +11,9 @@ Schemas.Products = new SimpleSchema({
     type: String
   },
   shortDescription: {
-    type: String,
-    optional: true
+    type: String
   },
-  description: {
+  longDescription: {
     type: String,
     optional: true
   },
@@ -36,6 +35,8 @@ Meteor.methods({
     Collections.Products.insert({
       storeId: storeId,
       name: options.name,
+      shortDescription: options.shortDescription,
+      longDescription: options.longDescription,
       isVisible: options.isVisible
     });
   }

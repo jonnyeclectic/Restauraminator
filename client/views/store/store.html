@@ -5,12 +5,16 @@
   <ul>
     {{#each products}}
       {{> product}}
+      
     {{/each}}
   </ul>
 </template>
 
 <template name="product">
   <li>
-    <span>{{name}}</span>
+    <h4>{{name}}</h4>
+    <h5>{{shortDescription}}</h5>
+    <span>{{longDescription}}</span>
+  <!--  <div>{{foodPicture}}</div> -->
   </li>
 </template>

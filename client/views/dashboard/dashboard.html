@@ -4,8 +4,9 @@
   {{> createProduct}}
   <h2>Products</h2>
   <ul>
-    {{#each products}}
+    {{#each products}} 
       {{> product}}
+        
     {{/each}}
   </ul>
 </template>
@@ -24,7 +25,11 @@
       </label>
       <label>
         <span>{{_ "longDescription"}}</span>
-        <textarea name="shortDescription"></textarea>
+        <textarea name="longDescription"></textarea>
+      </label>
+      <label>
+        <span>{{_ "foodPicture"}}</span>
+        <input name="foodPicture" type="file"/>
       </label>
       <button type="submit">{{_ "createProduct"}}</button>
       {{> alert}}
