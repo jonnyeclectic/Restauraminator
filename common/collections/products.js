@@ -2,7 +2,6 @@
 Schemas.Products = new SimpleSchema({
   _id: {
     type: String,
-    index: true,
     optional: true
   },
   storeId: {
@@ -21,7 +20,7 @@ Schemas.Products = new SimpleSchema({
   },
   isVisible: {
     type: Boolean,
-    index: 1
+    index: true
   }
 });
 
