@@ -6,6 +6,8 @@
 
 Restauraminator is a Meteor based commerce platform for restaurants.
 
+The currently deployed version can be found at [http://restauraminator.meteor.com]().
+
 ## File Structure
 
 ```bash
