@@ -1,13 +1,23 @@
 <template name="home">
-  {{#if currentUser}}
-    <h1>{{_ "title"}}</h1>
-    <a href="{{pathFor 'dashboard'}}">{{_ "dashboard"}}</a>
-    {{> signOut}}
-  {{else}}
-    <h1>{{_ "title"}}</h1>
-    <p>{{_ "subtitle"}}</p>
-
-    {{> createAccount}}
-    {{> signIn}}
-  {{/if}}
+  <section class="hero">
+    <div class="row">
+      <h1>{{_ "title"}}</h1>
+      <h3>{{_ "subtitle"}}</h3>
+    </div>
+  </section>
+  <section id="accounts">
+    <div class="row">
+      {{#if currentUser}}
+        <a href="{{pathFor 'dashboard'}}">{{_ "dashboard"}}</a>
+        {{> signOut}}
+      {{else}}
+        <div class="large-6 columns">
+          {{> createAccount}}
+        </div>
+        <div class="large-6 columns">
+          {{> signIn}}
+        </div>
+      {{/if}}  
+    </div>
+  </section>
 </template>
