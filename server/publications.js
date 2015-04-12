@@ -18,6 +18,10 @@ Meteor.publish('store', function(id) {
   return Collections.Stores.find({ _id: id });
 });
 
+Meteor.publish('cart', function(storeId) {
+  return Collections.Stores.find({  storeId: storeId });
+});
+
 Meteor.publish('adminData', function() {
   return Collections.Stores.find({ owner: this.userId });
 });

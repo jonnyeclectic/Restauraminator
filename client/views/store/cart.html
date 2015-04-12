@@ -1,0 +1,25 @@
+<template name="cart">
+  <h1>Store: {{  userIdentity currentUser._id  }}</h1>
+  <h1>Identity: {{> createCart}}</h1>
+  <h2>Products</h2>
+  <ul>
+    {{#each products}}
+      {{> addToCart}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="addToCart">
+  <li>
+    <button class="productCart">
+    <span>{{name}}</span>
+    </button>
+       {{counter}} 
+  </li>
+</template>
+
+<template name="createCart">
+  <li>
+       {{name}} 
+  </li>
+</template>
