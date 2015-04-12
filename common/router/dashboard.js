@@ -1,7 +1,10 @@
 DashboardPageController = BaseController.extend({
   waitOn: function() {
     this.adminDataSubscription = Meteor.subscribe('adminData');
-    this.productsSubscription = Meteor.subscribe('products', this.store()._id);
+
+    var store = this.store();
+    if (store)
+      this.productsSubscription = Meteor.subscribe('products', this.store()._id);
   },
   data: function() {
     return {

@@ -1,14 +1,12 @@
 <template name="layout">
-  <nav class="top-bar" role="navigation">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="{{ pathFor 'home'}}">{{_ "title"}}</a></h1>
-      </li>
-    </ul>
-  </nav>
-  <div class="row">
-    <div class="medium-12 columns">
-      {{> yield}}
-    </div>
+  <div id="navbar" class="contain-to-grid">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="{{ pathFor 'home'}}">{{_ "title"}}</a></h1>
+        </li>
+      </ul>
+    </nav>
   </div>
+  {{> yield}}
 </template>

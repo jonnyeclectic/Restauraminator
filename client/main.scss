@@ -1,3 +1,42 @@
 @import 'foundation';
+@import 'fonts';
 
+h1 {
+  font-family: 'Comfortaa-Regular', Arial, sans-serif;
+  font-size: 48px;
+}
 
+h3 {
+  font-size: 21px;
+}
+
+a {
+  color: #FF2A68;
+}
+
+section {
+  padding: 20px 0px;
+}
+
+button {
+  background: #FF2A68;
+}
+
+#products li {
+  width: 366px;
+  min-height: 160px;
+  background: #F2F2F2;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px;
+  padding: 8px 16px;
+  zoom: 1;
+  *display: inline;
+  _height: 160px;
+}
+
+.hero {
+  text-align: center;
+  background: #D6CEC3;
+}

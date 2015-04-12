@@ -2,7 +2,6 @@
 Schemas.Stores = new SimpleSchema({
   _id: {
     type: String,
-    index: true,
     optional: true
   },
   owner: {

@@ -2,7 +2,6 @@
 Schemas.Products = new SimpleSchema({
   _id: {
     type: String,
-    index: true,
     optional: true
   },
   storeId: {
@@ -12,16 +11,21 @@ Schemas.Products = new SimpleSchema({
     type: String
   },
   shortDescription: {
-    type: String,
-    optional: true
+    type: String
   },
-  description: {
+  calories: {
+    type: String
+  },
+  picSite: {
+    type: String
+  },
+  longDescription: {
     type: String,
     optional: true
   },
   isVisible: {
     type: Boolean,
-    index: 1
+    index: true
   }
 });
 
@@ -29,15 +33,23 @@ Schemas.Products = new SimpleSchema({
 Collections.Products = new Meteor.Collection('products');
 Collections.Products.attachSchema(Schemas.Products);
 
+
 // Methods
 Meteor.methods({
   createProduct: function(options) {
     var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-
+    
+    
     Collections.Products.insert({
       storeId: storeId,
       name: options.name,
+      shortDescription: options.shortDescription,
+      longDescription: options.longDescription,
+      calories: options.calories,
+      picSite: options.picSite,
       isVisible: options.isVisible
     });
+
+
   }
 });
