@@ -1,6 +1,14 @@
 @import 'foundation';
 @import 'fonts';
 
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
 h1 {
   font-family: 'Comfortaa-Regular', Arial, sans-serif;
   font-size: 48px;
@@ -16,6 +24,25 @@ a {
 
 section {
   padding: 20px 0px;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+}
+
+footer, .push {
+  height: 4em;
+}
+
+footer {
+  background: #000;
+  color: #8E8E93;
+  font-size: 11px;
+  text-transform: uppercase;
+  padding: 5em 5em 8em 5em;
 }
 
 button {
