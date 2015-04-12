@@ -29,6 +29,7 @@ cfs:upload-http@0.0.20
 cfs:worker@0.1.4
 check@1.0.5
 coffeescript@1.0.6
+cwaring:modernizr@3.0.0_1
 ddp@1.1.0
 deps@1.0.7
 ejson@1.0.6
@@ -50,6 +51,7 @@ iron:router@1.0.7
 iron:url@1.0.7
 jquery@1.11.3_2
 json@1.0.3
+juliancwirko:zf5@1.0.1
 launch-screen@1.0.2
 livedata@1.0.13
 localstorage@1.0.3
