@@ -44,8 +44,12 @@
         <textarea name="longDescription"></textarea>
       </label>
       <label>
-        <span>{{_ "foodPicture"}}</span>
-        <input name="foodPicture" type="file"/>
+        <span>{{_ "calories"}}</span>
+        <textarea name="calories" type= "number"></textarea>
+      </label>  
+      <label>
+        <span>{{_ "picSite"}}</span>
+        <input name="picSite" type="text"/>
       </label>
       <button type="submit">{{_ "createProduct"}}</button>
       {{> alert}}
