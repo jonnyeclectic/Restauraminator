@@ -15,6 +15,8 @@
   "productName": "Product name",
   "shortDescription": "Short description",
   "longDescription": "Long description",
+  "calories": "Calories",
+  "picSite": "Picture URL",
 
   "storefront": "Storefront"
 }

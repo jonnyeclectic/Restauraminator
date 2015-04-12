@@ -1,5 +1,6 @@
 {
   "includePaths": [
-    "public/vendor/foundation/scss"
+    "public/vendor/foundation/scss",
+    "public/fonts"
   ]
 }

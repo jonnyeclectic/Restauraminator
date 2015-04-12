@@ -1,16 +1,27 @@
 <template name="store">
-  <h1>Store: {{ store.name }}</h1>
-
-  <h2>Products</h2>
-  <ul>
-    {{#each products}}
-      {{> product}}
-    {{/each}}
-  </ul>
+  <section class="hero">
+    <div class="row">
+      <h1>Store: {{ store.name }}</h1>
+    </div>
+  </section>
+  <section id="products">
+    <div class="row">
+      <h2>Products</h2>
+      <ul>
+        {{#each products}}
+          {{> product}}
+        {{/each}}
+      </ul>
+    </div>
+  </section>
 </template>
 
 <template name="product">
   <li>
-    <span>{{name}}</span>
+    <h4>{{name}}</h4>
+    <h5>{{shortDescription}}</h5>
+    <span>{{longDescription}}</span>
+    <p>{{_ "calories"}}: {{calories}}</p>
+    <img id="blah" src={{picSite}} alt="your image" />
   </li>
 </template>
