@@ -16,6 +16,9 @@ Schemas.Products = new SimpleSchema({
   calories: {
     type: String
   },
+  ingredients: {
+    type: String
+  },
   picSite: {
     type: String
   },
@@ -46,6 +49,7 @@ Meteor.methods({
       shortDescription: options.shortDescription,
       longDescription: options.longDescription,
       calories: options.calories,
+      ingredients: options.ingredients,
       picSite: options.picSite,
       isVisible: options.isVisible
     });
