@@ -2,6 +2,7 @@
 Schemas.Stores = new SimpleSchema({
   _id: {
     type: String,
+    index: true,
     optional: true
   },
   owner: {
@@ -12,6 +13,10 @@ Schemas.Stores = new SimpleSchema({
   },
   description: {
     type: String,
+    optional: true
+  },
+  calorieLimit: {
+    type: Number,
     optional: true
   }
 });
@@ -27,5 +32,11 @@ Meteor.methods({
       owner: options.owner,
       name: options.name
     });
+  },
+  setLimit: function(options) {
+    Collections.Stores.update(
+    {_id: options._id},
+    {$set: {calorieLimit: options.limit}}
+    );
   }
 });

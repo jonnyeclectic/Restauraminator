@@ -1,7 +1,7 @@
-StorePageController = BaseController.extend({
+ReviewsPageController = BaseController.extend({
   waitOn: function() {
     this.storeSubscription = Meteor.subscribe('store', this.params._id);
-    this.productsSubscription = Meteor.subscribe('products', this.params._id);
+    this.reviewsSubscription = Meteor.subscribe('reviews', this.params._id);
   },
   onBeforeAction: function() {
     if (!this.store() && this.storeSubscription.ready()) {
@@ -13,24 +13,20 @@ StorePageController = BaseController.extend({
   data: function() {
     return {
       store: this.store(),
-      products: this.products()
+      reviews: this.reviews()
     };
   },
 
   store: function() {
     return Collections.Stores.findOne();
   },
-  products: function() {
-    return Collections.Products.find();
+  
+  reviews: function() {
+    return Collections.Reviews.find();
   }
 });
 
-Router.route('store', {
-  path: '/store/:_id',
-  controller: StorePageController
-});
-
-Router.route('settings', {
-  path: '/store/:_id/settings',
-  controller: StorePageController
+Router.route('reviews', {
+  path: '/store/:_id/reviews',
+  controller: ReviewsPageController
 });
