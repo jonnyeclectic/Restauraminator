@@ -12,19 +12,24 @@
   <section id="products">
     <div class="row">
       <div class="large-6 columns">
-        {{> createProduct}}
+        <a id="showModal" href="#" data-reveal-id="myModal">Click Me For A Modal</a>
       </div>
       <div class="large-6 columns">
         <h2>Products</h2>
         <ul>
           {{#each products}} 
             {{> product}}
-              
           {{/each}}
         </ul>
       </div>
     </div>
   </section>
+</template>
+
+<template name="createProductModal">
+  <div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    {{> createProduct}}
+  </div>
 </template>
 
 <template name="createProduct">
