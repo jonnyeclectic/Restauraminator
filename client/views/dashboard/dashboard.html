@@ -1,13 +1,30 @@
 <template name="dashboard">
-  <h1>{{_ "dashboard"}}: {{store.name}}</h1>
-  <a href="{{pathFor 'store' _id=this.store._id}}">{{_ "storefront"}}</a>
-  {{> createProduct}}
-  <h2>Products</h2>
-  <ul>
-    {{#each products}}
-      {{> product}}
-    {{/each}}
-  </ul>
+  <section class="hero">
+    <div class="row">
+      <h1>{{_ "dashboard"}}: {{store.name}}</h1>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <a href="{{pathFor 'store' _id=this.store._id}}">{{_ "storefront"}}</a>
+    </div>
+  </section>
+  <section id="products">
+    <div class="row">
+      <div class="large-6 columns">
+        {{> createProduct}}
+      </div>
+      <div class="large-6 columns">
+        <h2>Products</h2>
+        <ul>
+          {{#each products}} 
+            {{> product}}
+              
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </section>
 </template>
 
 <template name="createProduct">
@@ -24,7 +41,15 @@
       </label>
       <label>
         <span>{{_ "longDescription"}}</span>
-        <textarea name="shortDescription"></textarea>
+        <textarea name="longDescription"></textarea>
+      </label>
+      <label>
+        <span>{{_ "calories"}}</span>
+        <textarea name="calories" type= "number"></textarea>
+      </label>  
+      <label>
+        <span>{{_ "picSite"}}</span>
+        <input name="picSite" type="text"/>
       </label>
       <button type="submit">{{_ "createProduct"}}</button>
       {{> alert}}
