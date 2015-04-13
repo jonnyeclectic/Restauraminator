@@ -8,20 +8,8 @@ Schemas.Carts = new SimpleSchema({
   storeId: {
     type: String
   },
-  name: {
+  userId: {
     type: String
-  },
-  shortDescription: {
-    type: String,
-    optional: true
-  },
-  description: {
-    type: String,
-    optional: true
-  },
-  isVisible: {
-    type: Boolean,
-    index: 1
   }
 });
 
@@ -31,13 +19,11 @@ Collections.Carts.attachSchema(Schemas.Carts);
 
 // Methods
 Meteor.methods({
-  createCart: function(options) {
-    var storeId = Collections.Carts.findOne({ owner: Meteor.userId() })._id;
-
+  addToMyCart: function(options) {
     Collections.Carts.insert({
-      storeId: storeId,
-      name: options.name,
-      isVisible: options.isVisible
+      storeId: options.storeId,
+      userId: Meteor.userId(),
+      products: options.product
     });
   }
 });

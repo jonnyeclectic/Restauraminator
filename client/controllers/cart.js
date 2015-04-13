@@ -1,12 +1,12 @@
-Template.createCart.events({
-  'submit': function(event) {
-    var product = {
-      name: Meteor.Identity,//event.target.productName.value.trim(),
-      isVisible: true
+Template.addToCart.events({
+  'click .product': function(event) {
+  var cart = {
+      product: this._id,
+      storeId: this.storeId
     };
-
-    Meteor.call('createCart', cart);
-
-    return false;
+   //Collections.update(this.id
+  console.log(cart);//"You clicked something");
+  Meteor.call('addToMyCart', cart);
+  return false;
   }
 });
