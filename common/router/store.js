@@ -29,3 +29,8 @@ Router.route('store', {
   path: '/store/:_id',
   controller: StorePageController
 });
+
+Router.route('settings', {
+  path: '/store/:_id/settings',
+  controller: StorePageController
+});

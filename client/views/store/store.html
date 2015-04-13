@@ -1,6 +1,7 @@
 <template name="store">
   <h1>Store: {{ store.name }}</h1>
   <a href="{{pathFor 'store' _id=this.store._id}}/reviews">Store Reviews</a>
+  <p></p><a href="{{pathFor 'store' _id=this.store._id}}/settings">Admin Settings</a>
   <h2>Products</h2>
   <ul>
     {{#each products}}
