@@ -6,7 +6,9 @@
       {{> addToCart}}
     {{/each}}
   </ul>
-    
+    <ul>
+        {{> mycart}}
+    </ul>
 </template>
 
 <template name="addToCart">
@@ -20,4 +22,8 @@
 <template name="createCart">
     {{userIdentity currentUser._id}}
     <h1>Store: {{ store._id}} </h1>
+</template>
+
+<template name="mycart">
+        <h4>{{cart.products}}</h4>
 </template>

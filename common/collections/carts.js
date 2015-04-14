@@ -2,7 +2,7 @@
 Schemas.Carts = new SimpleSchema({
   _id: {
     type: String,
-    index: true,
+    //index: true,
     optional: true
   },
   storeId: {
@@ -10,6 +10,10 @@ Schemas.Carts = new SimpleSchema({
   },
   userId: {
     type: String
+  },
+  products: {
+    type: String,
+    optional: true
   }
 });
 
@@ -23,7 +27,8 @@ Meteor.methods({
     Collections.Carts.insert({
       storeId: options.storeId,
       userId: Meteor.userId(),
-      products: options.product
+      products: options.products,
+      _id:      options._id
     });
   }
 });
