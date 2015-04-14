@@ -17,7 +17,8 @@ Schemas.Products = new SimpleSchema({
     type: String
   },
   ingredients: {
-    type: String
+    type: String,
+    optional: true
   },
   picSite: {
     type: String
