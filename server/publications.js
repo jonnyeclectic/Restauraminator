@@ -29,3 +29,7 @@ Meteor.publish('adminData', function() {
 Meteor.publish('products', function(storeId) {
   return Collections.Products.find({ storeId: storeId });
 });
+
+Meteor.publish('reviews', function(storeId) {
+  return Collections.Reviews.find({ storeId: storeId });
+});

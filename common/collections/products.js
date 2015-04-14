@@ -46,7 +46,6 @@ Meteor.methods({
     createProduct: function(options) {
         var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
 
-
         Collections.Products.insert({
             storeId: storeId,
             name: options.name,
