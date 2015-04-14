@@ -40,21 +40,20 @@ Collections.Products.attachSchema(Schemas.Products);
 
 // Methods
 Meteor.methods({
-  createProduct: function(options) {
-    var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-    
-    
-    Collections.Products.insert({
-      storeId: storeId,
-      name: options.name,
-      shortDescription: options.shortDescription,
-      longDescription: options.longDescription,
-      calories: options.calories,
-      ingredients: options.ingredients,
-      picSite: options.picSite,
-      isVisible: options.isVisible
-    });
+    createProduct: function(options) {
+        var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+
+        Collections.Products.insert({
+            storeId: storeId,
+            name: options.name,
+            shortDescription: options.shortDescription,
+            longDescription: options.longDescription,
+            calories: options.calories,
+            ingredients: options.ingredients,
+            picSite: options.picSite,
+            isVisible: options.isVisible
+        });
 
 
-  }
+    }
 });

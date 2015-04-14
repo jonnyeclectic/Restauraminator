@@ -12,6 +12,8 @@ Template.createProduct.events({
    
     Meteor.call('createProduct', product);
 
-    return false;
-  }
+        Meteor.call('createProduct', product);
+
+        return false;
+    }
 });
