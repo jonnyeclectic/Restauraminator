@@ -1,6 +1,6 @@
 {
   "includePaths": [
-    ".meteor/local/build/programs/server/assets/packages/juliancwirko_zf5/scss/",
+    "public/vendor/foundation/scss",
     "public/fonts"
   ]
 }
