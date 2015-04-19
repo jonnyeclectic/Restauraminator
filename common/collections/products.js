@@ -30,6 +30,10 @@ Schemas.Products = new SimpleSchema({
         type: String,
         optional: true
     },
+    price: {
+        type: Number,
+        optional: true
+    },
     isVisible: {
         type: Boolean,
         index: true
@@ -45,7 +49,6 @@ Collections.Products.attachSchema(Schemas.Products);
 Meteor.methods({
     createProduct: function(options) {
         var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-
         Collections.Products.insert({
             storeId: storeId,
             name: options.name,
@@ -54,6 +57,7 @@ Meteor.methods({
             calories: options.calories,
             ingredients: options.ingredients,
             picSite: options.picSite,
+            price: options.price,
             isVisible: options.isVisible
         });
 

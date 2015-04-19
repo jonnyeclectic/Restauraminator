@@ -9,6 +9,11 @@
             <a href="{{pathFor 'store' _id=this.store._id}}">{{_ "storefront"}}</a>
         </div>
     </section>
+    <section>
+        <div class="row">
+            <a href="{{pathFor 'cart' _id=this.store._id}}">{{_ " Cart"}}</a>
+        </div>
+    </section>
     <section id="products">
         <div class="row">
             <div class="large-6 columns">
@@ -19,12 +24,12 @@
                 <ul>
                     {{#each products}}
                     {{> product}}
-
                     {{/each}}
                 </ul>
             </div>
         </div>
     </section>
+
 </template>
 
 <template name="createProduct">
@@ -54,6 +59,10 @@
             <label>
                 <span>{{_ "picSite"}}</span>
                 <input name="picSite" type="text"/>
+            </label>
+            <label>
+                <span>{{_ "Price"}}</span>
+                <input name="price" type="text"/>
             </label>
             <button type="submit">{{_ "createProduct"}}</button>
             {{> alert}}

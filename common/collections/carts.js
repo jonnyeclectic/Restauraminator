@@ -2,7 +2,6 @@
 Schemas.Carts = new SimpleSchema({
   _id: {
     type: String,
-    //index: true,
     optional: true
   },
   storeId: {
@@ -11,7 +10,15 @@ Schemas.Carts = new SimpleSchema({
   userId: {
     type: String
   },
-  products: {
+  price: {
+    type: Number,
+    optional: true
+  },
+  deliver: {
+        type: Number,
+        optional: true
+  },
+  myItem: {
     type: String,
     optional: true
   }
@@ -27,8 +34,29 @@ Meteor.methods({
     Collections.Carts.insert({
       storeId: options.storeId,
       userId: Meteor.userId(),
-      products: options.products,
-      _id:      options._id
+      myItem: options.products,
+      price: options.price,
+      deliver: 1
     });
   }
+});
+
+Meteor.methods({
+    removeFromCart: function(options) {
+        Collections.Carts.remove({
+            _id: options._id,
+            storeId: options.storeId,
+            userId: Meteor.userId(),
+            myItem: options.products,
+            price: options.price
+        });
+    }
+});
+
+Meteor.methods({
+    carryOrDelivery: function(options) {
+        Collections.Carts.update(
+            {storeId: options.storeId},
+            {$set: {deliver: 6} });
+    }
 });
