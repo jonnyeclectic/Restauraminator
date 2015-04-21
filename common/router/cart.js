@@ -26,6 +26,10 @@ CartPageController = BaseController.extend({
   },
   products: function() {
     return Collections.Products.find();
+  },
+
+  yieldTemplates: {
+    'navbar-store': {to: 'navbar'}
   }
 });
 
