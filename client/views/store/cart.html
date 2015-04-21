@@ -14,9 +14,9 @@
             {{> removeFromCart}}
         {{/each}}
     </ul>
-    <h2>Total Price: ${{counter}}</h2>
-    {{> carryOrDelivery}}
-    {{> stripe}}
+    <h2>Total Price: ${{myTotal store._id currentUser._id}}</h2>
+   {{> carryOrDelivery}}
+   {{> stripe}}
 </template>
 
 <template name="addToMyCart">
@@ -33,7 +33,7 @@
 
 <template name="carryOrDelivery">
     <label>
-        <input type="checkbox" class="deliver">  Deliver My Order
+        <input type="checkbox" class="deliver" checked>  Deliver My Order
     </label>
 </template>
 

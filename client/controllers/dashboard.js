@@ -12,7 +12,7 @@ Template.createProduct.events({
     };
    //kdef3 mergetool
 
-
+      console.log(product)
         Meteor.call('createProduct', product);
 
         return false;

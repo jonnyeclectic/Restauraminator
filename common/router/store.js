@@ -1,7 +1,7 @@
 StorePageController = BaseController.extend({
   waitOn: function() {
     this.storeSubscription = Meteor.subscribe('store', this.params._id);
-    this.cartSubscription = Meteor.subscribe('cart', this.params.storeId);
+    this.cartSubscription = Meteor.subscribe('cart', this.params._id);
     this.productsSubscription = Meteor.subscribe('products', this.params._id);
   },
   onBeforeAction: function() {

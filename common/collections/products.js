@@ -32,6 +32,7 @@ Schemas.Products = new SimpleSchema({
     },
     price: {
         type: Number,
+        decimal: true,
         optional: true
     },
     isVisible: {

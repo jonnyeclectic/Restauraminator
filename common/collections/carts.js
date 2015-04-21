@@ -12,11 +12,18 @@ Schemas.Carts = new SimpleSchema({
   },
   price: {
     type: Number,
+    decimal: true,
     optional: true
   },
   deliver: {
         type: Number,
         optional: true
+  },
+  total: {
+    type: Number,
+    decimal: true,
+    optional: true//,
+    //min: 0
   },
   myItem: {
     type: String,
@@ -36,6 +43,7 @@ Meteor.methods({
       userId: Meteor.userId(),
       myItem: options.products,
       price: options.price,
+      total: options.total,
       deliver: 1
     });
   }
@@ -48,15 +56,30 @@ Meteor.methods({
             storeId: options.storeId,
             userId: Meteor.userId(),
             myItem: options.products,
-            price: options.price
+            price: options.price,
+            total: options.total,
+            deliver: options.deliver
         });
     }
 });
 
 Meteor.methods({
     carryOrDelivery: function(options) {
+        var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
         Collections.Carts.update(
-            {storeId: options.storeId},
-            {$set: {deliver: 6} });
+            {storeId: storeID, userId: Meteor.userId()},
+            {$set: {deliver: options.deliver} },
+            {multi: true});
+    }
+});
+
+Meteor.methods({
+    total: function(options) {
+        var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+       //s if(options.total
+        Collections.Carts.update(
+            {storeId: storeID, userId: Meteor.userId()},
+            {$set: {total: options.total.toFixed(2)} },
+            {multi: true});
     }
 });
