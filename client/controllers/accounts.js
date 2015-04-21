@@ -8,6 +8,8 @@ Template.createAccount.events({
             storeName: event.target.storeName.value.trim()
         };
 
+        //var isOwner = (account.storeName != "user");
+
         // make sure the email is valid
         Meteor.call('validateEmail', account.email, function(error, result) {
             if (error) {
