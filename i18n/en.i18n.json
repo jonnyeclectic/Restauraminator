@@ -21,5 +21,14 @@
   "storefront": "Storefront",
   "reviews": "Reviews",
   "cart": "Cart",
-  "statistics": "Statistics"
+  "menu": "Menu",
+  "statistics": "Statistics",
+
+  "totalPrice": "Total Price",
+  "cardNumber": "Card Number",
+  "cvc": "CVC",
+  "expirationMM": "Expiration (MM)",
+  "expirationYYYY": "Expiration (YYYY)",
+  "deliverOrder": "Deliver My Order",
+  "placeOrder": "Place Order"
 }
