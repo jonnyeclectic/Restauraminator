@@ -18,6 +18,10 @@ Meteor.publish('store', function(_id) {
   return Collections.Stores.find({ _id: _id });
 });
 
+Meteor.publish('stores', function() {
+  return Collections.Stores.find();
+});
+
 Meteor.publish('cart', function(storeId) {
   return Collections.Stores.find({  storeId: storeId });
 });

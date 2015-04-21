@@ -32,6 +32,9 @@ Meteor.methods({
       name: options.name
     });
   },
+  displayStores: function() {
+    return Collections.Stores.find();
+  },
   setLimit: function(options) {
     Collections.Stores.update(
     {_id: options._id},
