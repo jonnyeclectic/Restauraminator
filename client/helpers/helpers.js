@@ -10,13 +10,3 @@ UI.registerHelper('myTotal', function(storeId, userId){
     else
         return 0;
 });
-
-UI.registerHelper('duplicateCheck', function(name){
-        var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-        var product = Collections.Products.findOne({ name: options.name});
-        console.log(product);
-        if( typeof product == 'undefined')
-            return true;
-        else
-            return false;
-});

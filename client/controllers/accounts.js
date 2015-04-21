@@ -45,6 +45,7 @@ Template.createAccount.events({
         }, function(error) {
             if (error)
                 console.log('Account creation error: ' + error.reason);
+            Session.set('alert', '');
         });
         return false;
     }

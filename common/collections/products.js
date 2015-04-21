@@ -1,5 +1,5 @@
-// Schema
-Schemas.Products = new SimpleSchema({
+    // Schema
+    Schemas.Products = new SimpleSchema({
     _id: {
         type: String,
         optional: true
@@ -39,15 +39,15 @@ Schemas.Products = new SimpleSchema({
         type: Boolean,
         index: true
     }
-});
+    });
 
-// Collection
-Collections.Products = new Meteor.Collection('products');
-Collections.Products.attachSchema(Schemas.Products);
+    // Collection
+    Collections.Products = new Meteor.Collection('products');
+    Collections.Products.attachSchema(Schemas.Products);
 
 
-// Methods
-Meteor.methods({
+    // Methods
+    Meteor.methods({
     createProduct: function(options) {
         var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
         Collections.Products.insert({
@@ -62,34 +62,33 @@ Meteor.methods({
             isVisible: options.isVisible
         });
     }
-});
+    });
 
-/*
-Meteor.methods({
+    Meteor.methods({
     duplicateCheck: function(options){
     var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-    var product = Collections.Products.findOne({ name: options.name});
-    console.log(product);
-    if( typeof product == 'undefined')
-        return true;
-    else
-        return false;
+    console.log(Collections.Products.findOne({ name: options.name, storeId: storeId}));
+    console.log(options.duplicate);
+    options.duplicate = true;
+        //return typeof Collections.Products.findOne({ name: options.name, storeId: storeId}) === "undefined";
+    return options;
     }
-});*/
+    });
 
-Meteor.methods({
+    Meteor.methods({
     removeFromStore: function(options) {
         var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
         Collections.Products.remove({
-            storeId: storeId,
-            name: options.name,
+            _id:              options._id,
+            storeId:          storeId,
+            name:             options.name,
             shortDescription: options.shortDescription,
-            longDescription: options.longDescription,
-            calories: options.calories,
-            ingredients: options.ingredients,
-            picSite: options.picSite,
-            price: options.price,
-            isVisible: options.isVisible
+            longDescription:  options.longDescription,
+            calories:         options.calories,
+            ingredients:      options.ingredients,
+            picSite:          options.picSite,
+            price:            options.price,
+            isVisible:        options.isVisible
         });
     }
-});
+    });
