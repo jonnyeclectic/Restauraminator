@@ -10,11 +10,8 @@ Template.createProduct.events({
       price: event.target.price.value,
       isVisible: true
     };
-   //kdef3 mergetool
 
-      console.log(product)
-        Meteor.call('createProduct', product);
-
-        return false;
-    }
+    Meteor.call('createProduct', product);
+    return false;
+  }
 });
