@@ -1,12 +1,17 @@
 <template name="dashboard">
     <section class="hero">
         <div class="row">
-            <h1>{{_ "dashboard"}}: {{store.name}}</h1>
+            <h1>{{store.name}}</h1>
         </div>
     </section>
     <section>
         <div class="row">
             <a href="{{pathFor 'store' _id=this.store._id}}">{{_ "storefront"}}</a>
+        </div>
+    </section>
+    <section>
+        <div class="row">
+            <a href="{{pathFor 'cart' _id=this.store._id}}">{{_ " Cart"}}</a>
         </div>
     </section>
     <section id="products">
@@ -19,13 +24,25 @@
                 <ul>
                     {{#each products}}
                     {{> product}}
-
                     {{/each}}
                 </ul>
             </div>
         </div>
     </section>
 </template>
+
+<template name="product">
+    <li>
+        <h4><button class="removeFromStore">{{name}}</button></h4>
+        <h5>{{shortDescription}}</h5>
+        <span>{{longDescription}}</span>
+        <p>Ingredients: {{ingredients}}</p>
+        <p>{{_ "calories"}}: {{calories}}</p>
+        <p>{{_ "Price"}}: {{price}}</p>
+        <img id="blah" src={{picSite}} alt="your image" />
+    </li>
+</template>
+
 
 <template name="createProduct">
     <form>
@@ -54,6 +71,10 @@
             <label>
                 <span>{{_ "picSite"}}</span>
                 <input name="picSite" type="text"/>
+            </label>
+            <label>
+                <span>{{_ "Price"}}</span>
+                <input name="price" type="text"/>
             </label>
             <button type="submit">{{_ "createProduct"}}</button>
             {{> alert}}

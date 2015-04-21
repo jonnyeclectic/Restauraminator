@@ -8,5 +8,21 @@
       </ul>
     </nav>
   </div>
-  {{> yield}}
+
+<div id="navbar" class="contain-to-grid">
+    <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="{{ pathFor 'dashboard'}}">Create Product</a></h1>
+            </li>
+        </ul>
+    </nav>
+</div>
+  <div class="wrapper">
+    {{> yield}}
+    <div class="push"></div>
+  </div>
+  <footer class="push">
+    © 2015 Restauraminator
+  </footer>
 </template>

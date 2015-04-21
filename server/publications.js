@@ -19,7 +19,7 @@ Meteor.publish('store', function(_id) {
 });
 
 Meteor.publish('cart', function(storeId) {
-  return Collections.Stores.find({  storeId: storeId });
+  return Collections.Carts.find({  storeId: storeId });
 });
 
 Meteor.publish('adminData', function() {
@@ -28,4 +28,8 @@ Meteor.publish('adminData', function() {
 
 Meteor.publish('products', function(storeId) {
   return Collections.Products.find({ storeId: storeId });
+});
+
+Meteor.publish('reviews', function(storeId) {
+  return Collections.Reviews.find({ storeId: storeId });
 });
