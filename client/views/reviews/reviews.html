@@ -1,13 +1,21 @@
 <template name="reviews">
-  <h1>Store: {{ store.name }}</h1>
-  <h2>Make A Review</h2>
-  {{> createReview}}
-  <h2>Reviews</h2>
-  <ul>
-    {{#each reviews}}
-      {{> review}}
-    {{/each}}
-  </ul>
+  <section class="hero">
+    <div class="row">
+      <h1>Reviews: {{ store.name }}</h1>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <h2>Make A Review</h2>
+      {{> createReview}}
+      <h2>Reviews</h2>
+      <ul>
+        {{#each reviews}}
+          {{> review}}
+        {{/each}}
+      </ul>
+    </div>
+  </section>
 </template>
 
 <template name="review">
