@@ -1,7 +1,7 @@
 <template name="dashboard">
     <section class="hero">
         <div class="row">
-            <h1>{{_ "dashboard"}}: {{store.name}}</h1>
+            <h1>{{store.name}}</h1>
         </div>
     </section>
     <section>
@@ -29,8 +29,20 @@
             </div>
         </div>
     </section>
-
 </template>
+
+<template name="product">
+    <li>
+        <h4><button class="removeFromStore">{{name}}</button></h4>
+        <h5>{{shortDescription}}</h5>
+        <span>{{longDescription}}</span>
+        <p>Ingredients: {{ingredients}}</p>
+        <p>{{_ "calories"}}: {{calories}}</p>
+        <p>{{_ "Price"}}: {{price}}</p>
+        <img id="blah" src={{picSite}} alt="your image" />
+    </li>
+</template>
+
 
 <template name="createProduct">
     <form>

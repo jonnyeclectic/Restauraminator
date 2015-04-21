@@ -27,7 +27,7 @@ Template.removeFromCart.events({
             total:    Session.get("counter"),
             deliver:  this.deliver
         };
-        console.log(cart);
+
         Meteor.call('total', cart);
         Meteor.call('removeFromCart', cart);
         return false;

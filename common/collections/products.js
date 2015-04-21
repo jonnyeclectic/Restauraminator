@@ -61,7 +61,35 @@ Meteor.methods({
             price: options.price,
             isVisible: options.isVisible
         });
+    }
+});
 
+/*
+Meteor.methods({
+    duplicateCheck: function(options){
+    var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+    var product = Collections.Products.findOne({ name: options.name});
+    console.log(product);
+    if( typeof product == 'undefined')
+        return true;
+    else
+        return false;
+    }
+});*/
 
+Meteor.methods({
+    removeFromStore: function(options) {
+        var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+        Collections.Products.remove({
+            storeId: storeId,
+            name: options.name,
+            shortDescription: options.shortDescription,
+            longDescription: options.longDescription,
+            calories: options.calories,
+            ingredients: options.ingredients,
+            picSite: options.picSite,
+            price: options.price,
+            isVisible: options.isVisible
+        });
     }
 });
