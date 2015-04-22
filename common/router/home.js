@@ -1,14 +1,6 @@
-/*
 HomePageController = BaseController.extend({
   waitOn: function() {
-    this.storesSubscription = Meteor.subscribe('stores', this.params._id);
-  },
-  onBeforeAction: function() {
-    if (!this.store() && this.storeSubscription.ready()) {
-      this.render('notFound');
-    } else {
-      this.next();
-    }
+    this.storesSubscription = Meteor.subscribe('stores');
   },
   data: function() {
     return {
@@ -25,4 +17,3 @@ Router.route('home', {
   path: '/',
   controller: HomePageController
 });
-*/

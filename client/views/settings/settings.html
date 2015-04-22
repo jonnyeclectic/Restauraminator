@@ -1,7 +1,11 @@
 <template name="settings">
   <h1>Store Settings for {{ store.name }}</h1>
   <h2>Calorie Limit</h2>
-  {{> setLimit}}
+    {{> setLimit}}
+  <h2>Privileges</h2>
+    {{#each users}}
+      {{> setPrivileges}}
+    {{/each}}
 </template>
 
 <template name="setLimit">
@@ -16,4 +20,8 @@
     </fieldset>
   </form>
   Calorie Limit: {{ store.calorieLimit }}
+</template>
+
+<template name="setPrivileges">
+  {{profile.storeName}}
 </template>

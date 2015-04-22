@@ -14,6 +14,10 @@ Meteor.publish('userData', function() {
   }
 });
 
+Meteor.publish('users', function(storeId) {
+  return Meteor.users.find({  storeId: storeId });
+});
+
 Meteor.publish('store', function(_id) {
   return Collections.Stores.find({ _id: _id });
 });

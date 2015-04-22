@@ -5,10 +5,13 @@ Template.createAccount.events({
         var account = {
             email: event.target.email.value.trim(),
             password: event.target.password.value,
+            storeOption: event.target.storeOption.value.trim(),
             storeName: event.target.storeName.value.trim()
         };
 
-        //var isOwner = (account.storeName != "user");
+        var isOwner = !(account.storeName.length < 1);
+        if (!isOwner)
+            account.storeName = event.target.storeOption.name.trim();
 
         // make sure the email is valid
         Meteor.call('validateEmail', account.email, function(error, result) {
@@ -27,6 +30,7 @@ Template.createAccount.events({
         }
 
         // make sure the store name is valid
+        /*
         if (account.storeName.length < 1) {
             Session.set('alert', 'Please enter a store name.');
             return false;
@@ -36,13 +40,19 @@ Template.createAccount.events({
             Session.set('alert', 'Please enter a store name.');
             return false;
         }
+        */
 
         // finally, create the user
         Accounts.createUser({
             email: account.email,
             password: account.password,
             profile: {
-                storeName: account.storeName
+                storeName: account.storeName,
+                storeID: account.storeOption,
+                isOwner: isOwner,
+                isKitchen: false,
+                isClerk: false,
+                isManager: false
             }
         }, function(error) {
             if (error)

@@ -13,15 +13,14 @@
       <label class="storeOption">
         <span>Store Option</span>
         <select name="storeOption" size=3>
-        <option name=one value=one> one </option>
-        {{#each stores}}
-          <option name="{{name}}" value="{{_id}}">{{name}}</option>
-        {{/each}}
+          {{#each stores}}
+            <option name="{{name}}" value="{{_id}}">{{name}}</option>
+          {{/each}}
         </select>
       </label>
       <label class="storeName">
         <span>{{_ "storeName"}} - When creating a non-owner account in a store, LEAVE THIS BLANK. Instead, pick a storefront from the list above. Otherwise, you will be creating a new storefront.</span>
-        <input name="storeName" placeholder="{{_ "storeName"}}" type="text" value="user">
+        <input name="storeName" placeholder="{{_ "storeName"}}" type="text">
       </label>
       <button type="submit">{{_ "createAccount"}}</button>
       {{> alert}}
