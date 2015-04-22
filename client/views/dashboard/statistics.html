@@ -1,7 +1,14 @@
 <template name="statistics">
   <section class="hero">
-        <div class="row">
-            <h1>{{_ "statistics"}}: {{store.name}}</h1>
-        </div>
-    </section>
+    <div class="row">
+        <h1>{{_ "statistics"}}: {{store.name}}</h1>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      Total orders: {{total}}
+      <br>
+      Frequency: {{frequency}} per day
+    </div>
+  </section>
 </template>

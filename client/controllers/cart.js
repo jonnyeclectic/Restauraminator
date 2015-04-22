@@ -61,3 +61,12 @@ Template.carryOrDelivery.events({
         return false;
     }
 });
+
+Template.stripe.events({
+  'submit': function(event) {
+    var order = {
+      timestamp: new Date()
+    };
+    Meteor.call('addOrder', order);
+  }
+});
