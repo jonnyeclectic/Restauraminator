@@ -33,3 +33,7 @@ Meteor.publish('products', function(storeId) {
 Meteor.publish('reviews', function(storeId) {
   return Collections.Reviews.find({ storeId: storeId });
 });
+
+Meteor.publish('orders', function(storeId) {
+  return Collections.Orders.find({ storeId: storeId });
+});
