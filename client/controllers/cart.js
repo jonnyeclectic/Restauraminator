@@ -1,3 +1,12 @@
+Template.cart.helpers({
+  cardPayment: function() {
+    if (Session.get("cash") > 0)
+      return false;
+    else
+      return true;
+  }
+});
+
 Template.addToMyCart.events({
   'click .product': function(event) {
   Session.set("counter", Session.get("counter") + this.price);
