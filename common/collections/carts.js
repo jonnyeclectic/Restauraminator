@@ -49,11 +49,7 @@ Meteor.methods({
       price: options.price,
       total: options.total,
       deliver: 1,
-<<<<<<< HEAD
-      completed: false
-=======
       cash:     1
->>>>>>> d3922a7ef2d870f93e4dbe144905b3ece7395364
     });
   }
 });

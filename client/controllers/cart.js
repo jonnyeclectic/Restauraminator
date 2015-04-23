@@ -49,6 +49,7 @@ Template.carryOrDelivery.helpers({
         return Session.get("deliver");
     }
 });
+
 Session.setDefault("cash", 1);
 Template.carryOrDelivery.helpers({
     deliver: function () {
