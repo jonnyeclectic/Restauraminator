@@ -9,3 +9,9 @@ Template.order.events({
     Meteor.call('createNotification', notification);
   }
 });
+
+Template.myOrder.events({
+  'click .delete': function(event) {
+    Meteor.call('deleteOrder', this._id)
+  }
+});

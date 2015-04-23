@@ -2,14 +2,18 @@
   <h1>Store Settings for {{ store.name }}</h1>
   <h2>Calorie Limit</h2>
     {{> setLimit}}
+  {{#if ownerCheck store._id currentUser._id}}
   <h2>Privileges</h2>
     {{#each users}}
-      {{> setRank}}
+      {{#unless profile.isOwner}}
+        {{> setRank}}
+      {{/unless}}
     {{/each}}
+  {{/if}}
 </template>
 
 <template name="setLimit">
-  Set a calorie limit. If this limit is exceeded in a shopping cart, customers will receive a warning that they could be making an unhealthy choice.
+  Set a calorie limit. If this limit is exceeded, customers will receive a warning that they could be making an unhealthy choice.
   <form>
     <fieldset>
       <label>
@@ -25,7 +29,6 @@
 <template name="setRank">
   <h3>{{profile.email}}</h3>
     Current Title: 
-    {{#if profile.isOwner}} Store Owner {{/if}}
     {{#if profile.isKitchen}} Kitchen Staff {{/if}}
     {{#if profile.isClerk}} Front Desk Clerk {{/if}}
     {{#if profile.isManager}} Manager {{/if}}

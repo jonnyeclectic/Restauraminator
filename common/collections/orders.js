@@ -56,5 +56,8 @@ Meteor.methods({
         status: statusValues[statusIndex]
       }
     },{});
+  },
+  deleteOrder: function(_id) {
+    Collections.Orders.remove({_id: _id});
   }
 });

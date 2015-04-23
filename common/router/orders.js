@@ -33,3 +33,8 @@ Router.route('orders', {
   path: '/orders',
   controller: OrdersPageController
 });
+
+Router.route('myOrders', {
+  path: '/myOrders',
+  controller: OrdersPageController
+});
