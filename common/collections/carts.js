@@ -19,6 +19,10 @@ Schemas.Carts = new SimpleSchema({
         type: Number,
         optional: true
   },
+    cash: {
+        type: Number,
+        optional: true
+    },
   total: {
     type: Number,
     decimal: true,
@@ -45,7 +49,11 @@ Meteor.methods({
       price: options.price,
       total: options.total,
       deliver: 1,
+<<<<<<< HEAD
       completed: false
+=======
+      cash:     1
+>>>>>>> d3922a7ef2d870f93e4dbe144905b3ece7395364
     });
   }
 });
@@ -62,7 +70,13 @@ Meteor.methods({
             deliver: options.deliver
         });
     },
-
+    cash: function(options) {
+        var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+        Collections.Carts.update(
+            {storeId: storeID, userId: Meteor.userId()},
+            {$set: {cash: options.cash} },
+            {multi: true});
+    },
     carryOrDelivery: function(options) {
         var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
         Collections.Carts.update(

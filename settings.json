@@ -1,14 +1,3 @@
 {
-    "public": {
-        "stripe": {
-            "testPublishableKey": "pk_test_jnIrg93sCpLc8tXMzgE14wLM",
-            "livePublishableKey": "pk_test_jnIrg93sCpLc8tXMzgE14wLM"
-        }
-    },
-    "private": {
-        "stripe": {
-            "testSecretKey": "sk_test_jnIrg93sCpLc8tXMzgE14wLM",
-            "liveSecretKey": "sk_test_jnIrg93sCpLc8tXMzgE14wLM"
-        }
-    }
+    "stripe": "3.0.3"
 }
