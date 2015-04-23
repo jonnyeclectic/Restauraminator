@@ -1,21 +1,14 @@
 <template name="layout">
 
 <div class="off-canvas-wrap" data-offcanvas>
-<div class="inner-wrap">
-  <div id="navbar" class="contain-to-grid">
-    <nav class="top-bar" data-topbar role="navigation">
-      {{> yield region="navbar"}}
-    </nav>
+  <div class="inner-wrap">
+    <div id="navbar" class="contain-to-grid">
+      <nav class="top-bar" data-topbar role="navigation">
+        {{> yield region="navbar"}}
+      </nav>
+    </div>
   </div>
-
-  <aside class="right-off-canvas-menu">
-    <ul class="off-canvas-list">
-      <li><a href="#">Test</a></li>
-    </ul>
-  </aside>
 </div>
-</div>
-
   <div class="wrapper">
     {{> yield}}
     <div class="push"></div>
