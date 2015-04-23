@@ -49,6 +49,7 @@ Template.createAccount.events({
             profile: {
                 storeName: account.storeName,
                 storeID: account.storeOption,
+                email: account.email,
                 isOwner: isOwner,
                 isKitchen: false,
                 isClerk: false,
