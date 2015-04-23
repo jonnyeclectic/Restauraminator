@@ -19,5 +19,18 @@
   "picSite": "Picture URL",
 
   "storefront": "Storefront",
-  "reviews": "Reviews"
+  "reviews": "Reviews",
+  "cart": "Cart",
+  "menu": "Menu",
+  "statistics": "Statistics",
+  "report": "Report",
+  "orders": "Orders",
+
+  "totalPrice": "Total Price",
+  "cardNumber": "Card Number",
+  "cvc": "CVC",
+  "expirationMM": "Expiration (MM)",
+  "expirationYYYY": "Expiration (YYYY)",
+  "deliverOrder": "Deliver My Order",
+  "placeOrder": "Place Order"
 }

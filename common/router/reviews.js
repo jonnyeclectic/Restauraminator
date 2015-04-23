@@ -23,6 +23,10 @@ ReviewsPageController = BaseController.extend({
   
   reviews: function() {
     return Collections.Reviews.find();
+  },
+
+  yieldTemplates: {
+    'navbar-store': {to: 'navbar'}
   }
 });
 

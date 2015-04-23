@@ -6,7 +6,8 @@ Template.createAccount.events({
             email: event.target.email.value.trim(),
             password: event.target.password.value,
             storeOption: event.target.storeOption.value.trim(),
-            storeName: event.target.storeName.value.trim()
+            storeName: event.target.storeName.value.trim(),
+            points: event.target.points.value = 0
         };
 
         var isOwner = !(account.storeName.length < 1);

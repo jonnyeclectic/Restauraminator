@@ -27,7 +27,7 @@ Meteor.publish('stores', function() {
 });
 
 Meteor.publish('cart', function(storeId) {
-  return Collections.Stores.find({  storeId: storeId });
+  return Collections.Carts.find({  storeId: storeId });
 });
 
 Meteor.publish('adminData', function() {
@@ -40,4 +40,8 @@ Meteor.publish('products', function(storeId) {
 
 Meteor.publish('reviews', function(storeId) {
   return Collections.Reviews.find({ storeId: storeId });
+});
+
+Meteor.publish('orders', function(storeId) {
+  return Collections.Orders.find({ storeId: storeId });
 });

@@ -1,18 +1,46 @@
 <template name="layout">
-  <div id="navbar" class="contain-to-grid">
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="{{ pathFor 'home'}}">{{_ "title"}}</a></h1>
-        </li>
-      </ul>
-    </nav>
+
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    <div id="navbar" class="contain-to-grid">
+      <nav class="top-bar" data-topbar role="navigation">
+        {{> yield region="navbar"}}
+      </nav>
+    </div>
   </div>
+</div>
   <div class="wrapper">
     {{> yield}}
     <div class="push"></div>
   </div>
   <footer class="push">
     © 2015 Restauraminator
+    <a class="right" href="{{ pathFor 'home'}}">Powered by Restauraminator</a>
   </footer>
+</template>
+
+<template name="navbar">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="{{ pathFor 'home'}}">{{_ "title"}}</a></h1>
+    </li>
+  </ul>
+  <div class="top-bar-section">
+    <ul class="right">
+      <li><a href="{{ pathFor 'dashboard'}}">Dashboard</a></li>
+    </ul>
+  </div>
+</template>
+
+<template name="navbar-store">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="{{ pathFor 'store' _id=this.store._id}}">{{ this.store.name }}</a></h1>
+    </li>
+  </ul>
+  <div class="top-bar-section">
+    <ul class="right">
+      <li><a href="{{ pathFor 'cart' _id=this.store._id}}">Cart</a></li>
+    </ul>
+  </div>
 </template>
