@@ -21,8 +21,21 @@
       </div>
     </div>
   </section>
+  <section>
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Notifications</h3>
+        {{#each notifications}}
+          {{> notification}}
+        {{/each}}
+      </div>
+    </div>
+  </section>
   <section id="products">
     <div class="row">
+      <div class="large-12 columns">
+        <h3>Store Administration</h3>
+      </div>
       <div class="large-6 columns">
         {{> createProduct}}
       </div>
@@ -87,4 +100,8 @@
       {{> alert}}
     </fieldset>
   </form>
+</template>
+
+<template name="notification">
+  <li><a href="#">{{text}}</a></li>
 </template>
