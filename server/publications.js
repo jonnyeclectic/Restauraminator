@@ -14,8 +14,16 @@ Meteor.publish('userData', function() {
   }
 });
 
+Meteor.publish('users', function() {
+  return Meteor.users.find();
+});
+
 Meteor.publish('store', function(_id) {
   return Collections.Stores.find({ _id: _id });
+});
+
+Meteor.publish('stores', function() {
+  return Collections.Stores.find();
 });
 
 Meteor.publish('cart', function(storeId) {
@@ -36,4 +44,8 @@ Meteor.publish('reviews', function(storeId) {
 
 Meteor.publish('orders', function(storeId) {
   return Collections.Orders.find({ storeId: storeId });
+});
+
+Meteor.publish('notifications', function(storeId) {
+  return Collections.Notifications.find({ userId: this.userId, storeId: storeId });
 });
