@@ -10,7 +10,9 @@ Template.createAccount.events({
         };
 
         var isOwner = !(account.storeName.length < 1);
-        if (!isOwner)
+        if (isOwner)
+            account.storeOption = account.storeName;
+        else
             account.storeName = event.target.storeOption.name.trim();
 
         // make sure the email is valid

@@ -4,7 +4,7 @@
     {{> setLimit}}
   <h2>Privileges</h2>
     {{#each users}}
-      {{> setPrivileges}}
+      {{> setRank}}
     {{/each}}
 </template>
 
@@ -22,6 +22,25 @@
   Calorie Limit: {{ store.calorieLimit }}
 </template>
 
-<template name="setPrivileges">
+<template name="setRank">
   <h3>{{profile.email}}</h3>
+    Current Title: 
+    {{#if profile.isOwner}} Store Owner {{/if}}
+    {{#if profile.isKitchen}} Kitchen Staff {{/if}}
+    {{#if profile.isClerk}} Front Desk Clerk {{/if}}
+    {{#if profile.isManager}} Manager {{/if}}
+    <form>
+      <fieldset>
+        <label class="rank">
+          <legend>Set User Status</legend>
+          <select name="rank" size=3>
+            <option name="isCustomer" value=0>Customer Only</option>
+            <option name="isKitchen" value=1>Kitchen Staff</option>
+            <option name="isClerk" value=2>Front Desk Clerk</option>
+            <option name="isManager" value=3>Manager</option>
+          </select>
+        </label>
+        <button type="submit">Set</button>
+      </fieldset>
+    </form>
 </template>
