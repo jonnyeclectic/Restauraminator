@@ -64,31 +64,22 @@
     }
     });
 
+    /*/
     Meteor.methods({
     duplicateCheck: function(options){
-    var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-    console.log(Collections.Products.findOne({ name: options.name, storeId: storeId}));
-    console.log(options.duplicate);
-    options.duplicate = true;
-        //return typeof Collections.Products.findOne({ name: options.name, storeId: storeId}) === "undefined";
-    return options;
+            var copy = Collections.Products.findOne({ name: options.name});
+            var del = Collections.Products.findOne({ _id: {$not: copy._id}, name: options.name});
+            console.log(del);
+            Collections.Products.remove({
+                _id: del._id
+            });
     }
-    });
+    });/*/
 
     Meteor.methods({
     removeFromStore: function(options) {
-        var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
         Collections.Products.remove({
-            _id:              options._id,
-            storeId:          storeId,
-            name:             options.name,
-            shortDescription: options.shortDescription,
-            longDescription:  options.longDescription,
-            calories:         options.calories,
-            ingredients:      options.ingredients,
-            picSite:          options.picSite,
-            price:            options.price,
-            isVisible:        options.isVisible
+            _id:              options._id
         });
     }
     });

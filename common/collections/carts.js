@@ -44,7 +44,8 @@ Meteor.methods({
       myItem: options.products,
       price: options.price,
       total: options.total,
-      deliver: 1
+      deliver: 1,
+      completed: false
     });
   }
 });

@@ -8,23 +8,26 @@ Template.createProduct.events({
       calories: event.target.calories.value.trim(),
       picSite: event.target.picSite.value.trim(),
       price: event.target.price.value,
-      duplicate: false,
       isVisible: true
     };
 
     Meteor.call('createProduct', product);
-    var duplicate = Meteor.call('duplicateCheck', product);
-    console.log(duplicate);
+    Meteor.call('duplicateCheck', product);
+    //console.log("duplicate");
+    //console.log(duplicate);
 
-    if(duplicate){                                                  //Checks if this item is already in the store
-        Meteor.call('removeFromStore', duplicate);
+    /*if(duplicate){                                                  //Checks if this item is already in the store
+        //Meteor.call('removeFromStore', duplicate);
         Session.set('alert', 'Product already exists.');
     }
     else{
         Session.set('alert', '');
         var frm = document.getElementsByName('contact-form')[0];    //gets page
         frm.reset();                                                //resets page after submit
-    }
+    }*/
+
+      var frm = document.getElementsByName('contact-form')[0];    //gets page
+      frm.reset();                                                //resets page after submit
 
     return false;
   }

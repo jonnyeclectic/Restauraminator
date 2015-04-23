@@ -5,7 +5,7 @@ DashboardPageController = BaseController.extend({
         var store = this.store();
         if (store)
             this.productsSubscription = Meteor.subscribe('products', this.store()._id);
-        this.storeSubscription = Meteor.subscribe('store', this.params._id);
+            this.storeSubscription = Meteor.subscribe('store', this.params._id);
     },
     data: function() {
         return {
