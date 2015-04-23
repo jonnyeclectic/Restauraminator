@@ -1,0 +1,24 @@
+<template name="myOrders">
+  <section class="hero">
+    <div class="row">
+        <h1>My Orders</h1>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <h3>Orders List</h3>
+      <ul id="products">
+      {{#each processing}}
+        {{> myOrder}}
+      {{/each}}
+      </ul>
+    </div>
+  </section>
+</template>
+
+<template name="myOrder">
+  <li>
+    {{timestamp}}
+    <button class="delete">Cancel Order</button>
+  </li>
+</template>

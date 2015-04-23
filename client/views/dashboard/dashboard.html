@@ -1,4 +1,5 @@
 <template name="dashboard">
+  {{customerRedirect currentUser.profile.isOwner}}
   <section class="hero">
     <div class="row">
       <h1>{{store.name}}</h1>
@@ -63,6 +64,9 @@
       <p>Ingredients: {{ingredients}}</p>
       <p>{{_ "calories"}}: {{calories}}</p>-->
       <p>{{_ "Price"}}: {{price}}</p>
+      {{#if lessThan store.calorieLimit calories}}
+        WARNING: Due to a high calorie level, this item may be unhealthy.
+      {{/if}}
     </div>
     <div class="large-12 columns">
       <button class="removeFromStore expand">{{_ "delete"}}</button>
