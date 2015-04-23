@@ -32,12 +32,14 @@ Meteor.methods({
       name: options.name
     });
   },
+
   setLimit: function(options) {
     Collections.Stores.update(
       {_id: options._id},
       {$set: {calorieLimit: options.limit}}
     );
   },
+
   setRank: function(options) {
     var user = Meteor.users.findOne({'profile.email': options.userEmail});
     Meteor.users.update(
@@ -67,6 +69,7 @@ Meteor.methods({
       );
     }
   },
+  
   getTitle: function(userEmail) {
     var user = Meteor.users.findOne({'profile.email': userEmail});
     if (user.profile.isOwner)

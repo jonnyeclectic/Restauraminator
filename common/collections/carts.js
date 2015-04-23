@@ -60,23 +60,18 @@ Meteor.methods({
             total: options.total,
             deliver: options.deliver
         });
-    }
-});
+    },
 
-Meteor.methods({
     carryOrDelivery: function(options) {
         var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
         Collections.Carts.update(
             {storeId: storeID, userId: Meteor.userId()},
             {$set: {deliver: options.deliver} },
             {multi: true});
-    }
-});
+    },
 
-Meteor.methods({
     total: function(options) {
         var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-       //s if(options.total
         Collections.Carts.update(
             {storeId: storeID, userId: Meteor.userId()},
             {$set: {total: options.total.toFixed(2)} },

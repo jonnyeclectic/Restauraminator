@@ -61,23 +61,8 @@ Meteor.methods({
             price: options.price,
             isVisible: options.isVisible
         });
-    }
-});
+    },
 
-/*
-Meteor.methods({
-    duplicateCheck: function(options){
-    var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-    var product = Collections.Products.findOne({ name: options.name});
-    console.log(product);
-    if( typeof product == 'undefined')
-        return true;
-    else
-        return false;
-    }
-});*/
-
-Meteor.methods({
     removeFromStore: function(options) {
         var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
         Collections.Products.remove({

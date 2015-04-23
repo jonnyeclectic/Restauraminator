@@ -21,6 +21,16 @@ Collections.Notifications.attachSchema(Schemas.Notifications);
 
 // Methods
 Meteor.methods({
+  /*
+    Create a notification for the current user.
+
+    Example:
+      var notification = {
+        storeId: this.storeId,
+        text: "Example notification"
+      };
+      Meteor.call('createNotification', notofication);
+   */
   createNotification: function(options) {
     Collections.Notifications.insert({
       userId: Meteor.userId(),
