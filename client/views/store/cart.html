@@ -1,0 +1,99 @@
+<template name="cart">
+  <section class="hero">
+    <div class="row">
+      <h1>Cart</h1>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <h2>{{_ "menu"}} ({{ store.name}})</h2>
+      <ul>
+        {{#each products}}
+          {{> addToMyCart}}
+        {{/each}}
+      </ul>
+      <h2>{{_ "cart"}} ({{userIdentity currentUser._id}})</h2>
+      <ul>
+        {{#each carts}}
+          {{> removeFromCart}}
+        {{/each}}
+      </ul>
+      <h2>{{_ "totalPrice"}}: ${{myTotal store._id currentUser._id}}</h2>
+       {{> carryOrDelivery}}
+       {{> stripe}}
+    </div>
+  </section>
+</template>
+
+<template name="addToMyCart">
+  <button class="product">
+    <span>{{name}}</span>
+  </button>
+</template>
+
+<template name="removeFromCart">
+  <button class="remove">
+    <span>{{myItem}}</span>
+  </button>
+</template>
+
+<template name="carryOrDelivery">
+  <label>
+    <input type="checkbox" class="deliver" checked>
+    {{_ "deliverOrder"}}
+  </label>
+</template>
+
+<template name="stripe">
+<form action="" method="POST">
+  <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="pk_test_QJ5NmhD04z0bCi7xDpMU4zUL"
+      data-amount="2000"
+      data-name="Demo Site"
+      data-description="2 widgets ($20.00)"
+      data-image="/128x128.png">
+  </script>
+</form>
+
+  <form action="" method="POST" id="payment-form">
+    <span class="payment-errors"></span>
+
+    <div class="form-row">
+      <label>
+        <span>{{_ "cardNumber"}}</span>
+        <input type="text" size="20" data-stripe="number"/>
+      </label>
+    </div>
+    <div class="row">
+      <div class="small-4 columns">
+        <label>
+        <span>{{_ "cvc"}}</span>
+        <input type="text" size="2" data-stripe="cvc"/>
+      </label>
+      </div>
+      <div class="small-4 columns">
+        <label>
+          <span>{{_ "expirationMM"}}</span>
+          <input type="text" size="2" data-stripe="exp-month"/>
+        </label>
+      </div>
+      <div class="small-4 columns">
+        <label>
+          <span>{{_ "expirationYYYY"}}</span>
+          <input type="text" size="2" data-stripe="exp-year"/>
+        </label>
+      </div>
+    </div>
+
+    <button type="submit">{{_ "placeOrder"}}</button>
+  </form>
+
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+  <script type="text/javascript">
+    // This identifies your website in the createToken call below
+    Stripe.setPublishableKey('pk_test_QJ5NmhD04z0bCi7xDpMU4zUL');
+    // ...
+  </script>
+</template>

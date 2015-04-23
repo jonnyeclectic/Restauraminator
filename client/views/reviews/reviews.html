@@ -1,0 +1,45 @@
+<template name="reviews">
+  <section class="hero">
+    <div class="row">
+      <h1>Reviews: {{ store.name }}</h1>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <h2>Make A Review</h2>
+      {{> createReview}}
+      <h2>Reviews</h2>
+      <ul>
+        {{#each reviews}}
+          {{> review}}
+        {{/each}}
+      </ul>
+    </div>
+  </section>
+</template>
+
+<template name="review">
+  <li>
+    <span>Rating: {{rating}}/5 &nbsp;&nbsp; Comment: {{comment}} &nbsp;&nbsp;</span>
+    <!-- adminData if statement -->
+    <button class="delete">Delete</button>
+  </li>
+</template>
+
+<template name="createReview">
+  <form>
+    <fieldset>
+      <legend>Review Creator</legend>
+      <label>
+        <span>Rating (between 1 and 5)</span>
+        <input name="rating" type="number" min="1" max="5">
+      </label>
+      <label>
+        <span>Comment</span>
+        <input name="comment" type="text">
+      </label>
+      <button type="submit">Create</button>
+      {{> alert}}
+    </fieldset>
+  </form>
+</template>

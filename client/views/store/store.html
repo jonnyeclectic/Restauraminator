@@ -2,6 +2,7 @@
   <section class="hero">
     <div class="row">
       <h1>Store: {{ store.name }}</h1>
+      <a href="{{pathFor 'reviews' _id=this.store._id}}">{{_ "reviews"}}</a>
     </div>
   </section>
   <section id="products">
@@ -16,13 +17,3 @@
   </section>
 </template>
 
-<template name="product">
-  <li>
-    <h4>{{name}}</h4>
-    <h5>{{shortDescription}}</h5>
-    <span>{{longDescription}}</span>
-    <p>Ingredients: {{ingredients}}</p>
-    <p>{{_ "calories"}}: {{calories}}</p>
-    <img id="blah" src={{picSite}} alt="your image" />
-  </li>
-</template>
