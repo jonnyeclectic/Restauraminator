@@ -5,7 +5,8 @@ Template.createAccount.events({
         var account = {
             email: event.target.email.value.trim(),
             password: event.target.password.value,
-            storeName: event.target.storeName.value.trim()
+            storeName: event.target.storeName.value.trim(),
+            points: event.target.points.value = 0
         };
 
         // make sure the email is valid
