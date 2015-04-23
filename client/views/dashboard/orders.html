@@ -1,0 +1,40 @@
+<template name="orders">
+  <section class="hero">
+    <div class="row">
+        <h1>{{_ "orders"}}: {{store.name}}</h1>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <dl class="sub-nav">
+          <dt>Sections:</dt>
+          <dd><a href="{{pathFor 'dashboard'}}">{{_ "home"}}</a></dd>
+          <dd><a href="{{pathFor 'statistics'}}">{{_ "statistics"}}</a></dd>
+          <dd class="active"><a href="{{pathFor 'orders'}}">{{_ "orders"}}</a></dd>
+      </dl>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <h3>Processing</h3>
+      <ul id="products">
+      {{#each processing}}
+        {{> order}}
+      {{/each}}
+      </ul>
+      <h3>Complete</h3>
+      <ul id="products">
+      {{#each complete}}
+        {{> order}}
+      {{/each}}
+      </ul>
+    </div>
+  </section>
+</template>
+
+<template name="order">
+  <li>
+    {{timestamp}}
+    <button class="process">Change Status</button>
+  </li>
+</template>

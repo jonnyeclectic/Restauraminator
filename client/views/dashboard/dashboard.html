@@ -1,82 +1,111 @@
 <template name="dashboard">
-    <section class="hero">
-        <div class="row">
-            <h1>{{store.name}}</h1>
-        </div>
-    </section>
-    <section>
-        <div class="row">
-            <a href="{{pathFor 'store' _id=this.store._id}}">{{_ "storefront"}}</a>
-            <br>
-            <a href="{{pathFor 'cart' _id=this.store._id}}">{{_ "cart"}}</a>
-            <br>
-            <a href="{{pathFor 'statistics'}}">{{_ "statistics"}}</a>
-        </div>
-    </section>
-    <section id="products">
-        <div class="row">
-            <div class="large-6 columns">
-                {{> createProduct}}
-            </div>
-            <div class="large-6 columns">
-                <h2>Products</h2>
-                <ul>
-                    {{#each products}}
-                    {{> product}}
-                    {{/each}}
-                </ul>
-            </div>
-        </div>
-    </section>
+  {{customerRedirect currentUser.profile.isOwner}}
+  <section class="hero">
+    <div class="row">
+      <h1>{{store.name}}</h1>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <dl class="sub-nav">
+          <dt>Sections:</dt>
+          <dd class="active"><a href="{{pathFor 'dashboard'}}">{{_ "home"}}</a></dd>
+          <dd><a href="{{pathFor 'statistics'}}">{{_ "statistics"}}</a></dd>
+          <dd><a href="{{pathFor 'orders'}}">{{_ "orders"}}</a></dd>
+      </dl>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <div class="large-12 columns">
+        <a class="button" href="{{pathFor 'store' _id=this.store._id}}">{{_ "storefront"}}</a>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Notifications</h3>
+        {{#each notifications}}
+          {{> notification}}
+        {{/each}}
+      </div>
+    </div>
+  </section>
+  <section id="products">
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Store Administration</h3>
+      </div>
+      <div class="large-6 columns">
+        {{> createProduct}}
+      </div>
+      <div class="large-6 columns">
+        <h2>Products</h2>
+        <ul>
+          {{#each products}}
+            {{> product}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </section>
 </template>
 
 <template name="product">
-    <li>
-        <h4><button class="removeFromStore">{{name}}</button></h4>
-        <h5>{{shortDescription}}</h5>
-        <span>{{longDescription}}</span>
-        <p>Ingredients: {{ingredients}}</p>
-        <p>{{_ "calories"}}: {{calories}}</p>
-        <p>{{_ "Price"}}: {{price}}</p>
-        <img id="blah" src={{picSite}} alt="your image" />
-    </li>
+  <li>
+    <h4><button class="removeFromStore">{{name}}</button></h4>
+    <h5>{{shortDescription}}</h5>
+    <span>{{longDescription}}</span>
+    <p>Ingredients: {{ingredients}}</p>
+    <p>{{_ "calories"}}: {{calories}}</p>
+    <p>{{_ "Price"}}: {{price}}</p>
+    <img id="blah" src={{picSite}} alt="your image" />
+    {{#if lessThan store.calorieLimit calories}}
+      WARNING: Due to a high calorie level, this item may be unhealthy.
+    {{/if}}
+  </li>
 </template>
 
 
 <template name="createProduct">
-    <form>
-        <fieldset>
-            <legend>{{_ "createProduct"}}</legend>
-            <label>
-                <span>{{_ "productName"}}</span>
-                <input name="productName" type="text">
-            </label>
-            <label>
-                <span>{{_ "shortDescription"}}</span>
-                <input name="shortDescription" type="text">
-            </label>
-            <label>
-                <span>{{_ "longDescription"}}</span>
-                <textarea name="longDescription" type="text"></textarea>
-            </label>
-            <label>
-                <span>{{_ "calories"}}</span>
-                <input name="calories" type= "number">
-            </label>
-            <label>
-                <span>{{_ "Ingredients"}}</span>
-                    <textarea name="ingredients" type= "text"></textarea>
-            </label>
-            <label>
-                <span>{{_ "picSite"}}</span>
-                <input name="picSite" type="text"/>
-            </label>
-            <label>
-                <span>{{_ "Price"}}</span>
-                <input name="price" type="text"/>
-            </label>
-            <button type="submit">{{_ "createProduct"}}</button>
-            {{> alert}}
-        </fieldset>
-    </form>
+  <form>
+    <fieldset>
+      <legend>{{_ "createProduct"}}</legend>
+      <label>
+        <span>{{_ "productName"}}</span>
+        <input name="productName" type="text">
+      </label>
+      <label>
+        <span>{{_ "shortDescription"}}</span>
+        <input name="shortDescription" type="text">
+      </label>
+      <label>
+        <span>{{_ "longDescription"}}</span>
+        <textarea name="longDescription" type="text"></textarea>
+      </label>
+      <label>
+        <span>{{_ "calories"}}</span>
+        <input name="calories" type= "number">
+      </label>
+      <label>
+        <span>{{_ "Ingredients"}}</span>
+          <textarea name="ingredients" type= "text"></textarea>
+      </label>
+      <label>
+        <span>{{_ "picSite"}}</span>
+        <input name="picSite" type="text"/>
+      </label>
+      <label>
+        <span>{{_ "Price"}}</span>
+        <input name="price" type="text"/>
+      </label>
+      <button type="submit">{{_ "createProduct"}}</button>
+      {{> alert}}
+    </fieldset>
+  </form>
+</template>
+
+<template name="notification">
+  <li><a href="#">{{text}}</a></li>
 </template>

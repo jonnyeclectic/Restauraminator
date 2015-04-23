@@ -10,3 +10,25 @@ UI.registerHelper('myTotal', function(storeId, userId){
     else
         return 0;
 });
+
+UI.registerHelper('ownerCheck', function(storeID, userID) {
+    var store = Collections.Stores.findOne({_id: storeID});
+    if (store.owner == userID)
+        return true;
+    else
+        return false;
+});
+
+UI.registerHelper('lessThan', function(num1, num2) {
+    if (num1 < num2)
+        return true;
+    else
+        return false;
+});
+
+UI.registerHelper('customerRedirect', function(isOwner) {
+    /*if (isOwner)
+        return false;
+    else*/
+        Router.go('store');
+});

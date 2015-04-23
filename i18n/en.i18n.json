@@ -10,6 +10,7 @@
   "password": "Password",
   "storeName": "Store name",
 
+  "home": "Home",
   "dashboard": "Dashboard",
   "createProduct": "Create product",
   "productName": "Product name",
@@ -21,5 +22,16 @@
   "storefront": "Storefront",
   "reviews": "Reviews",
   "cart": "Cart",
-  "statistics": "Statistics"
+  "menu": "Menu",
+  "statistics": "Statistics",
+  "report": "Report",
+  "orders": "Orders",
+
+  "totalPrice": "Total Price",
+  "cardNumber": "Card Number",
+  "cvc": "CVC",
+  "expirationMM": "Expiration (MM)",
+  "expirationYYYY": "Expiration (YYYY)",
+  "deliverOrder": "Deliver My Order",
+  "placeOrder": "Place Order"
 }

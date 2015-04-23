@@ -15,9 +15,4 @@ cfs:gridfs
 cfs:filesystem
 cwaring:modernizr
 jquery
-meteorhacks:npm
-
-
-npm-container
-momentjs:moment
-random
+ongoworks:pdf

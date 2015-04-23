@@ -61,22 +61,8 @@
             price: options.price,
             isVisible: options.isVisible
         });
-    }
-    });
 
-    /*/
-    Meteor.methods({
-    duplicateCheck: function(options){
-            var copy = Collections.Products.findOne({ name: options.name});
-            var del = Collections.Products.findOne({ _id: {$not: copy._id}, name: options.name});
-            console.log(del);
-            Collections.Products.remove({
-                _id: del._id
-            });
-    }
-    });/*/
-
-    Meteor.methods({
+    },
     removeFromStore: function(options) {
         Collections.Products.remove({
             _id:              options._id

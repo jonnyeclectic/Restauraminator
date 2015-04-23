@@ -5,6 +5,13 @@
       <a href="{{pathFor 'reviews' _id=this.store._id}}">{{_ "reviews"}}</a>
     </div>
   </section>
+  <section id="signOut">
+    <div class="row">
+      {{#if currentUser}}
+        {{> signOut}}
+      {{/if}}
+    </div>
+  </section>
   <section id="products">
     <div class="row">
       <h2>Products</h2>
