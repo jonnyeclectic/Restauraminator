@@ -13,6 +13,7 @@
         {{/each}}
       </ul>
       <h2>{{_ "cart"}} ({{userIdentity currentUser._id}})</h2>
+      <h2>{{_ "Points"}} ({{currentUser.points}})</h2>
       <ul>
         {{#each carts}}
           {{> removeFromCart}}

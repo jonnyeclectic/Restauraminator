@@ -1,8 +1,8 @@
-StorePageController = BaseController.extend({
+SettingsPageController = BaseController.extend({
   waitOn: function() {
     this.storeSubscription = Meteor.subscribe('store', this.params._id);
-    this.cartSubscription = Meteor.subscribe('cart', this.params._id);
     this.productsSubscription = Meteor.subscribe('products', this.params._id);
+    this.usersSubscription = Meteor.subscribe('users', this.params._id);
   },
   onBeforeAction: function() {
     if (!this.store() && this.storeSubscription.ready()) {
@@ -13,28 +13,23 @@ StorePageController = BaseController.extend({
   },
   data: function() {
     return {
-        carts: this.cart(),
       store: this.store(),
-      products: this.products()
+      products: this.products(),
+      users: this.users()
     };
   },
-
+  users: function() {
+    return Meteor.users.find();
+  },
   store: function() {
     return Collections.Stores.findOne();
   },
-    cart: function() {
-        return Collections.Carts.find();
-    },
   products: function() {
     return Collections.Products.find();
-  },
-
-  yieldTemplates: {
-    'navbar-store': {to: 'navbar'}
   }
 });
 
-Router.route('store', {
-  path: '/store/:_id',
-  controller: StorePageController
+Router.route('settings', {
+  path: '/store/:_id/settings',
+  controller: SettingsPageController
 });

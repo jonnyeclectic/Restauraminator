@@ -22,3 +22,23 @@ Schemas.Reviews = new SimpleSchema({
 
 Collections.Reviews = new Meteor.Collection('reviews');
 Collections.Reviews.attachSchema(Schemas.Reviews);
+
+// Methods
+Meteor.methods({
+  createReview: function(options) {
+    var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+
+    Collections.Reviews.insert({
+      storeId: storeId,
+      rating: options.rating,
+      comment: options.comment,
+      isVisible: options.isVisible
+    });
+  },
+
+  deleteReview: function(options) {
+    Collections.Reviews.remove({
+      _id: options._id
+    });
+  }
+});
