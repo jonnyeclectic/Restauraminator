@@ -50,6 +50,15 @@ Collections.Products.attachSchema(Schemas.Products);
 Meteor.methods({
     createProduct: function(options) {
         var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+
+        var exists = Collections.Products.findOne({
+                storeId: storeId,
+                name: options.name
+        });
+
+        if (exists)
+            return false;
+
         Collections.Products.insert({
             storeId: storeId,
             name: options.name,
@@ -61,6 +70,8 @@ Meteor.methods({
             price: options.price,
             isVisible: options.isVisible
         });
+
+        return true;
     },
 
     removeFromStore: function(options) {

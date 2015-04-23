@@ -53,13 +53,20 @@
 
 <template name="product">
   <li>
-    <h4><button class="removeFromStore">{{name}}</button></h4>
-    <h5>{{shortDescription}}</h5>
-    <span>{{longDescription}}</span>
-    <p>Ingredients: {{ingredients}}</p>
-    <p>{{_ "calories"}}: {{calories}}</p>
-    <p>{{_ "Price"}}: {{price}}</p>
-    <img id="blah" src={{picSite}} alt="your image" />
+    <div class="small-5 columns">
+      <img id="blah" src={{picSite}} alt="your image" />
+    </div>
+    <div class="small-7 columns">
+      <h4>{{name}}</h4>
+      <h5>{{shortDescription}}</h5>
+      <!--<span>{{longDescription}}</span>
+      <p>Ingredients: {{ingredients}}</p>
+      <p>{{_ "calories"}}: {{calories}}</p>-->
+      <p>{{_ "Price"}}: {{price}}</p>
+    </div>
+    <div class="large-12 columns">
+      <button class="removeFromStore expand">{{_ "delete"}}</button>
+    </div>
   </li>
 </template>
 
