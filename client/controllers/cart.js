@@ -25,7 +25,8 @@ Template.removeFromCart.events({
             price:    this.price,
             userId:   this.userId,
             total:    Session.get("counter"),
-            deliver:  this.deliver
+            deliver:  this.deliver,
+            cash:  this.cash
         };
 
         Meteor.call('total', cart);
@@ -48,6 +49,12 @@ Template.carryOrDelivery.helpers({
         return Session.get("deliver");
     }
 });
+Session.setDefault("cash", 1);
+Template.carryOrDelivery.helpers({
+    deliver: function () {
+        return Session.get("cash");
+    }
+});
 }
 Template.carryOrDelivery.events({
     'change .deliver': function(event) {
@@ -58,6 +65,19 @@ Template.carryOrDelivery.events({
         };
 
         Meteor.call('carryOrDelivery', cOd);
+        return false;
+    }
+});
+
+Template.cash.events({
+    'change .cash': function(event) {
+        Session.set("cash", Session.get("cash") * -1);
+        var cOd = {
+            cash: Session.get("cash"),
+            user: this.userId
+        };
+
+        Meteor.call('cash', cOd);
         return false;
     }
 });

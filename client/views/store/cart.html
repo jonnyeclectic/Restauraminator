@@ -21,6 +21,7 @@
       </ul>
       <h2>{{_ "totalPrice"}}: ${{myTotal store._id currentUser._id}}</h2>
        {{> carryOrDelivery}}
+        {{> cash}}
        {{> stripe}}
     </div>
   </section>
@@ -43,6 +44,13 @@
     <input type="checkbox" class="deliver" checked>
     {{_ "deliverOrder"}}
   </label>
+</template>
+
+<template name="cash">
+    <label>
+        <input type="checkbox" class="cash" checked>
+        {{_ "Cash Payment"}}
+    </label>
 </template>
 
 <template name="stripe">
