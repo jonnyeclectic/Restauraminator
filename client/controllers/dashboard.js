@@ -1,3 +1,9 @@
+Template.dashboard.events({
+  'click .clearNotifications': function(event) {
+    Meteor.call('clearNotifications');
+  }
+});
+
 Template.createProduct.events({
   'submit': function(event) {
     var product = {

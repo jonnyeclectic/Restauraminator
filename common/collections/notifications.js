@@ -37,5 +37,14 @@ Meteor.methods({
       storeId: options.storeId,
       text: options.text
     });
+  },
+
+  clearNotifications: function() {
+    // notifications are cleared from the store that the user owns only
+    var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+
+    Collections.Notifications.remove({
+      storeId: storeId
+    });
   }
 });

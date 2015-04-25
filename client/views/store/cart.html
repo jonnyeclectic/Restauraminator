@@ -22,9 +22,13 @@
         {{/each}}
       </ul>
       <h2>{{_ "totalPrice"}}: ${{myTotal store._id currentUser._id}}</h2>
-       {{> carryOrDelivery}}
-        {{> cash}}
-       {{> stripe}}
+      {{> carryOrDelivery}}
+      {{> cash}}
+      {{#if cardPayment}}
+        {{> stripe}}
+      {{else}}
+        {{> cashPayment}}
+      {{/if}}
     </div>
   </section>
 </template>
@@ -58,6 +62,10 @@
         <input type="checkbox" class="cash" checked>
         {{_ "Cash Payment"}}
     </label>
+</template>
+
+<template name="cashPayment">
+  <button type="submit">{{_ "placeOrder"}}</button>
 </template>
 
 <template name="stripe">
