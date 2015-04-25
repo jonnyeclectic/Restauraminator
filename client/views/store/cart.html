@@ -17,7 +17,7 @@
       <h2>{{_ "cart"}} ({{userIdentity currentUser._id}})</h2>
       <h2>{{_ "Points"}} ({{currentUser.points}})</h2>
       <ul>
-        {{#each carts}} <!-- filter this later for completed orders -->
+        {{#each carts}}
           {{> removeFromCart}}
         {{/each}}
       </ul>
@@ -39,9 +39,11 @@
 </template>
 
 <template name="removeFromCart">
+    {{#if complete}}
   <button class="remove">
     <span>{{myItem}}</span>
   </button>
+    {{/if}}
 </template>
 
 <template name="carryOrDelivery">

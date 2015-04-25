@@ -26,7 +26,8 @@ Template.removeFromCart.events({
             userId:   this.userId,
             total:    Session.get("counter"),
             deliver:  this.deliver,
-            cash:  this.cash
+            cash:     this.cash,
+            complete: this.complete
         };
 
         Meteor.call('total', cart);
@@ -89,6 +90,12 @@ Template.stripe.events({
     var order = {
       timestamp: new Date()
     };
+
+    var cartOrder = {
+        complete: 0
+    }
+    Session.set("counter", 0);
     Meteor.call('addOrder', order);
+    Meteor.call('complete', cartOrder);
   }
 });

@@ -4,7 +4,7 @@ UI.registerHelper('userIdentity', function(userId) {
 });
 
 UI.registerHelper('myTotal', function(storeId, userId){
-    var cartItem = Collections.Carts.findOne({ storeId: storeId, userId: userId });
+    var cartItem = Collections.Carts.findOne({ storeId: storeId, userId: userId, complete:1 });
     if( typeof cartItem != 'undefined' && cartItem.total >= 0)
         return cartItem.total;
     else
