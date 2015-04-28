@@ -1,3 +1,9 @@
+Template.dashboard.events({
+  'click .clearNotifications': function(event) {
+    Meteor.call('clearNotifications');
+  }
+});
+
 Template.createProduct.events({
   'submit': function(event) {
     var product = {
@@ -11,10 +17,23 @@ Template.createProduct.events({
       isVisible: true
     };
 
-    //if(Meteor.call('duplicateCheck', product))//duplicateCheck(product.name))
     Meteor.call('createProduct', product);
-    var frm = document.getElementsByName('contact-form')[0];    //gets page
-    frm.reset();                                                //resets page after submit
+    Meteor.call('duplicateCheck', product);
+    //console.log("duplicate");
+    //console.log(duplicate);
+
+    /*if(duplicate){                                                  //Checks if this item is already in the store
+        //Meteor.call('removeFromStore', duplicate);
+        Session.set('alert', 'Product already exists.');
+    }
+    else{
+        Session.set('alert', '');
+        var frm = document.getElementsByName('contact-form')[0];    //gets page
+        frm.reset();                                                //resets page after submit
+    }*/
+
+      var frm = document.getElementsByName('contact-form')[0];    //gets page
+      frm.reset();                                                //resets page after submit
 
     return false;
   }
@@ -23,6 +42,7 @@ Template.createProduct.events({
 Template.product.events({
     'click .removeFromStore': function(event) {
         var product = {
+            _id:                this._id,
             name:               this.name,
             shortDescription:   this.shortDescription,
             longDescription:    this.longDescription,

@@ -1,4 +1,6 @@
 <template name="cart">
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript">Stripe.setPublishableKey('pk_test_jnIrg93sCpLc8tXMzgE14wLM');</script>
   <section class="hero">
     <div class="row">
       <h1>Cart</h1>
@@ -20,11 +22,19 @@
         {{/each}}
       </ul>
       <h2>{{_ "totalPrice"}}: ${{myTotal store._id currentUser._id}}</h2>
-       {{> carryOrDelivery}}
-       {{> stripe}}
+      {{> carryOrDelivery}}
+      {{> cash}}
+      {{#if cardPayment}}
+        {{> stripe}}
+      {{else}}
+        {{> cashPayment}}
+      {{/if}}
     </div>
   </section>
 </template>
+
+
+
 
 <template name="addToMyCart">
   <button class="product">
@@ -33,9 +43,11 @@
 </template>
 
 <template name="removeFromCart">
+    {{#if complete}}
   <button class="remove">
     <span>{{myItem}}</span>
   </button>
+    {{/if}}
 </template>
 
 <template name="carryOrDelivery">
@@ -45,20 +57,27 @@
   </label>
 </template>
 
-<template name="stripe">
-<form action="" method="POST">
-  <script
-      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="pk_test_QJ5NmhD04z0bCi7xDpMU4zUL"
-      data-amount="2000"
-      data-name="Demo Site"
-      data-description="2 widgets ($20.00)"
-      data-image="/128x128.png">
-  </script>
-</form>
+<template name="cash">
+    <label>
+        <input type="checkbox" class="cash" checked>
+        {{_ "Cash Payment"}}
+    </label>
+</template>
 
-  <form action="" method="POST" id="payment-form">
-    <span class="payment-errors"></span>
+<template name="cashPayment">
+  <button type="submit">{{_ "placeOrder"}}</button>
+</template>
+
+<template name="stripe">
+    <form action="" method="POST" id="payment-form">
+        <span class="payment-errors"></span>
+
+        <div class="form-row">
+            <label>
+                <span>Card Number</span>
+                <input type="text" size="20" data-stripe="number"/>
+            </label>
+        </div>
 
     <div class="form-row">
       <label>
@@ -89,12 +108,4 @@
 
     <button type="submit">{{_ "placeOrder"}}</button>
   </form>
-
-  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
-  <script type="text/javascript">
-    // This identifies your website in the createToken call below
-    Stripe.setPublishableKey('pk_test_QJ5NmhD04z0bCi7xDpMU4zUL');
-    // ...
-  </script>
 </template>

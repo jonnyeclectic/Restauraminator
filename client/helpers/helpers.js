@@ -4,19 +4,31 @@ UI.registerHelper('userIdentity', function(userId) {
 });
 
 UI.registerHelper('myTotal', function(storeId, userId){
-    var cartItem = Collections.Carts.findOne({ storeId: storeId, userId: userId });
+    var cartItem = Collections.Carts.findOne({ storeId: storeId, userId: userId, complete:1 });
     if( typeof cartItem != 'undefined' && cartItem.total >= 0)
         return cartItem.total;
     else
         return 0;
 });
 
-UI.registerHelper('duplicateCheck', function(name){
-        var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-        var product = Collections.Products.findOne({ name: options.name});
-        console.log(product);
-        if( typeof product == 'undefined')
-            return true;
-        else
-            return false;
+UI.registerHelper('ownerCheck', function(storeID, userID) {
+    var store = Collections.Stores.findOne({_id: storeID});
+    if (store.owner == userID)
+        return true;
+    else
+        return false;
+});
+
+UI.registerHelper('lessThan', function(num1, num2) {
+    if (num1 < num2)
+        return true;
+    else
+        return false;
+});
+
+UI.registerHelper('customerRedirect', function(isOwner) {
+    /*if (isOwner)
+        return false;
+    else*/
+        Router.go('store');
 });

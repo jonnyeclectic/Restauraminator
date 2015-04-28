@@ -19,6 +19,14 @@ Schemas.Carts = new SimpleSchema({
         type: Number,
         optional: true
   },
+  cash: {
+    type: Number,
+    optional: true
+    },
+  complete: {
+    type: Number,
+    optional: true
+    },
   total: {
     type: Number,
     decimal: true,
@@ -44,7 +52,9 @@ Meteor.methods({
       myItem: options.products,
       price: options.price,
       total: options.total,
-      deliver: 1
+      deliver: 1,
+      cash:    1,
+      complete:1
     });
   }
 });
@@ -58,25 +68,35 @@ Meteor.methods({
             myItem: options.products,
             price: options.price,
             total: options.total,
-            deliver: options.deliver
+            deliver: options.deliver,
+            cash:    options.cash,
+            complete:options.complete,
         });
-    }
-});
-
-Meteor.methods({
+    },
+    cash: function(options) {
+        var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+        Collections.Carts.update(
+            {storeId: storeID, userId: Meteor.userId()},
+            {$set: {cash: options.cash} },
+            {multi: true});
+    },
+    complete: function(options) {
+        var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+        Collections.Carts.update(
+            {storeId: storeID, userId: Meteor.userId()},
+            {$set: {complete: options.complete} },
+            {multi: true});
+    },
     carryOrDelivery: function(options) {
         var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
         Collections.Carts.update(
             {storeId: storeID, userId: Meteor.userId()},
             {$set: {deliver: options.deliver} },
             {multi: true});
-    }
-});
+    },
 
-Meteor.methods({
     total: function(options) {
         var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-       //s if(options.total
         Collections.Carts.update(
             {storeId: storeID, userId: Meteor.userId()},
             {$set: {total: options.total.toFixed(2)} },

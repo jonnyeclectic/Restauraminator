@@ -21,11 +21,30 @@ Collections.Notifications.attachSchema(Schemas.Notifications);
 
 // Methods
 Meteor.methods({
+  /*
+    Create a notification for the current user.
+
+    Example:
+      var notification = {
+        storeId: this.storeId,
+        text: "Example notification"
+      };
+      Meteor.call('createNotification', notofication);
+   */
   createNotification: function(options) {
     Collections.Notifications.insert({
       userId: Meteor.userId(),
       storeId: options.storeId,
       text: options.text
+    });
+  },
+
+  clearNotifications: function() {
+    // notifications are cleared from the store that the user owns only
+    var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+
+    Collections.Notifications.remove({
+      storeId: storeId
     });
   }
 });

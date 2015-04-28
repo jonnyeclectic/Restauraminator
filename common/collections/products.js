@@ -1,5 +1,5 @@
-// Schema
-Schemas.Products = new SimpleSchema({
+    // Schema
+    Schemas.Products = new SimpleSchema({
     _id: {
         type: String,
         optional: true
@@ -39,17 +39,26 @@ Schemas.Products = new SimpleSchema({
         type: Boolean,
         index: true
     }
-});
+    });
 
-// Collection
-Collections.Products = new Meteor.Collection('products');
-Collections.Products.attachSchema(Schemas.Products);
+    // Collection
+    Collections.Products = new Meteor.Collection('products');
+    Collections.Products.attachSchema(Schemas.Products);
 
 
-// Methods
-Meteor.methods({
+    // Methods
+    Meteor.methods({
     createProduct: function(options) {
         var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+
+        var exists = Collections.Products.findOne({
+                storeId: storeId,
+                name: options.name
+        });
+
+        if (exists)
+            return false;
+
         Collections.Products.insert({
             storeId: storeId,
             name: options.name,
@@ -61,35 +70,12 @@ Meteor.methods({
             price: options.price,
             isVisible: options.isVisible
         });
-    }
-});
 
-/*
-Meteor.methods({
-    duplicateCheck: function(options){
-    var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
-    var product = Collections.Products.findOne({ name: options.name});
-    console.log(product);
-    if( typeof product == 'undefined')
         return true;
-    else
-        return false;
-    }
-});*/
-
-Meteor.methods({
+    },
     removeFromStore: function(options) {
-        var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
         Collections.Products.remove({
-            storeId: storeId,
-            name: options.name,
-            shortDescription: options.shortDescription,
-            longDescription: options.longDescription,
-            calories: options.calories,
-            ingredients: options.ingredients,
-            picSite: options.picSite,
-            price: options.price,
-            isVisible: options.isVisible
+            _id:              options._id
         });
     }
-});
+    });
