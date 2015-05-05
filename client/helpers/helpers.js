@@ -35,7 +35,10 @@ UI.registerHelper('lessThan', function(num1, num2) {
 UI.registerHelper('getTip', function(storeId, userId) {
     var cart = Collections.Carts.findOne({ storeId: storeId, userId: userId});
     var tip = cart.total * (cart.tipPercentage / 100);
-    return tip.toFixed(2);
+    if (typeof tip != 'undefined' && tip >= 0)
+        return tip.toFixed(2);
+    else
+        return 0;
 });
 
 UI.registerHelper('customerRedirect', function(isOwner) {
