@@ -109,3 +109,13 @@ Template.stripe.events({
     Meteor.call('complete', cartOrder);
   }
 });
+
+Template.tipCalculator.events({
+  'submit': function(event) {
+    var tip = {
+      percentage: event.target.percentage.value.trim()
+    };
+    Meteor.call('assignPercentage', tip);                            //resets page after submit
+    return false;
+  }
+});

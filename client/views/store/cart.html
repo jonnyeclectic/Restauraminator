@@ -22,6 +22,7 @@
         {{/each}}
       </ul>
       <h2>{{_ "totalPrice"}}: ${{myTotal store._id currentUser._id}}</h2>
+      {{> tipCalculator}}
       {{> carryOrDelivery}}
       {{> cash}}
       {{#if cardPayment}}
@@ -107,5 +108,22 @@
     </div>
 
     <button type="submit">{{_ "placeOrder"}}</button>
+  </form>
+</template>
+
+<template name="tipCalculator">
+  <form>
+    <fieldset>
+      <legend>Tip Calculator</legend>
+      <label>
+        <span>Percentage</span>
+        <input name="percentage" type="number">
+      </label>
+      <button type="submit">Calculate</button>
+      <label>
+        <span>Tip: ${{getTip store._id currentUser._id }} </span>
+      </label>
+      {{> alert}}
+    </fieldset>
   </form>
 </template>
