@@ -25,11 +25,18 @@
       {{> tipCalculator}}
       {{> carryOrDelivery}}
       {{> cash}}
+      <form action="" method="POST" id="payment-form">
       {{#if cardPayment}}
-        {{> stripe}}
-      {{else}}
-        {{> cashPayment}}
+        <label>
+          <span>Number of Cards</span>
+          <input class="numberOfCards" value="{{numberOfCards}}" type="number">
+        </label>
+        {{#each cards}}
+          {{> stripe}}
+        {{/each}}
       {{/if}}
+      <button type="submit">{{_ "placeOrder"}}</button>
+        </form>
     </div>
   </section>
 </template>
@@ -65,20 +72,17 @@
     </label>
 </template>
 
-<template name="cashPayment">
-  <button type="submit">{{_ "placeOrder"}}</button>
-</template>
-
 <template name="stripe">
-    <form action="" method="POST" id="payment-form">
-        <span class="payment-errors"></span>
+  <fieldset>
+    <legend>Card {{index}}</legend>
+    <span class="payment-errors"></span>
 
-        <div class="form-row">
-            <label>
-                <span>Card Number</span>
-                <input type="text" size="20" data-stripe="number"/>
-            </label>
-        </div>
+    <div class="form-row">
+        <label>
+            <span>Card Number</span>
+            <input type="text" size="20" data-stripe="number"/>
+        </label>
+    </div>
 
     <div class="form-row">
       <label>
@@ -106,9 +110,7 @@
         </label>
       </div>
     </div>
-
-    <button type="submit">{{_ "placeOrder"}}</button>
-  </form>
+  </fieldset> 
 </template>
 
 <template name="tipCalculator">
