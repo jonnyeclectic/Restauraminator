@@ -69,7 +69,7 @@ Meteor.methods({
       );
     }
   },
-  
+
   getTitle: function(userEmail) {
     var user = Meteor.users.findOne({'profile.email': userEmail});
     if (user.profile.isOwner)

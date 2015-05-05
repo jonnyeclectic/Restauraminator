@@ -9,6 +9,7 @@ Template.cart.helpers({
 
 Template.addToMyCart.events({
   'click .product': function(event) {
+
   Session.set("counter", Session.get("counter") + this.price);
   var cart = {
       products: this.name.trim(),
@@ -21,6 +22,17 @@ Template.addToMyCart.events({
   Meteor.call('total', cart);
   return false;
   }
+});
+
+Template.game.events({
+    'click .play': function(event) {
+        var start = {
+            game:    new Date()
+        };
+        console.log(start.game);
+        Meteor.call('game', start);
+        return false;
+    }
 });
 
 Template.removeFromCart.events({
@@ -109,3 +121,4 @@ Template.stripe.events({
     Meteor.call('complete', cartOrder);
   }
 });
+

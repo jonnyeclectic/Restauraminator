@@ -3,6 +3,21 @@ UI.registerHelper('userIdentity', function(userId) {
   return user.emails[0].address;
 });
 
+UI.registerHelper('win', function(storeId, userId) {
+    var playerCart = Collections.Carts.findOne({ storeId: storeId, userId: userId });
+    console.log( playerCart.game);
+    return playerCart.game;
+    /*console.log(userId);
+    if(userId != 213)
+        console.log(userId);
+    else
+        console.log("FAIL");
+    var start = {
+        game:    true
+    };
+    Meteor.call('game', start);*/
+});
+
 UI.registerHelper('myTotal', function(storeId, userId){
     var cartItem = Collections.Carts.findOne({ storeId: storeId, userId: userId, complete:1 });
     if( typeof cartItem != 'undefined' && cartItem.total >= 0)
@@ -31,4 +46,14 @@ UI.registerHelper('customerRedirect', function(isOwner) {
         return false;
     else*/
         Router.go('store');
+});
+
+UI.registerHelper('discount', function(storeID) {
+   // console.log(Math.floor((Math.random() * 800) + 1));
+    return Math.floor((Math.random() * 800) + 1);
+});
+
+UI.registerHelper('discount2', function(storeID) {
+    //console.log(Math.floor((Math.random() * 800) + 1));
+    return Math.floor((Math.random() * 800) + 1);
 });

@@ -36,6 +36,10 @@ Schemas.Carts = new SimpleSchema({
   myItem: {
     type: String,
     optional: true
+  },
+  game: {
+        type: String,
+        optional: true
   }
 });
 
@@ -78,6 +82,13 @@ Meteor.methods({
         Collections.Carts.update(
             {storeId: storeID, userId: Meteor.userId()},
             {$set: {cash: options.cash} },
+            {multi: true});
+    },
+    game: function(options) {
+        var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+        Collections.Carts.update(
+            {storeId: storeID, userId: Meteor.userId()},
+            {$set: {game: options.game} },
             {multi: true});
     },
     complete: function(options) {

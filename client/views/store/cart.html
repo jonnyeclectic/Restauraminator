@@ -1,7 +1,25 @@
-<template name="cart">
+<template name="cart" >
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script type="text/javascript">Stripe.setPublishableKey('pk_test_jnIrg93sCpLc8tXMzgE14wLM');</script>
-  <section class="hero">
+    <section onmousemove="move(event)">
+    <section class="hero" id="win">
+      <script> function move(e) {
+    var x = e.clientX;
+    var y = e.clientY;
+    var time = new Date();
+    var xSpot = {{discount2 x}};
+          console.log("xSpot:",xSpot);
+    var ySpot = {{discount y}};
+          console.log("ySpot:",ySpot);
+          console.log("position:",x,y);
+    //fv v vvar ySpot = {{discount y}}
+    if(x >= xSpot && x &lt; (xSpot + 150) && y>= ySpot && y&lt; (ySpot + 150))
+    {
+        console.log("WINNER");
+        document.getElementById("win").innerHTML = "YOU WON!";
+    }
+}
+      </script>
     <div class="row">
       <h1>Cart</h1>
     </div>
@@ -24,17 +42,23 @@
       <h2>{{_ "totalPrice"}}: ${{myTotal store._id currentUser._id}}</h2>
       {{> carryOrDelivery}}
       {{> cash}}
+        {{> game}}
       {{#if cardPayment}}
-        {{> stripe}}
+        {{> cash}}
       {{else}}
-        {{> cashPayment}}
+        {{> stripe}}
       {{/if}}
     </div>
   </section>
+    </section>
 </template>
 
-
-
+<template name="game">
+    <div>
+        Try to win a discount! Click "Play!" for a chance to win 10% off your order. Try to find the hidden discount on the page by moving your cursor around the page within 10 seconds!
+    </div>
+    <button class="play" onclick="setTimeout(function(){alert('Times Up')},10000);">Play!</button>
+</template>
 
 <template name="addToMyCart">
   <button class="product">
@@ -59,7 +83,7 @@
 
 <template name="cash">
     <label>
-        <input type="checkbox" class="cash" checked>
+        <input type="checkbox" class="cash">
         {{_ "Cash Payment"}}
     </label>
 </template>
@@ -108,4 +132,12 @@
 
     <button type="submit">{{_ "placeOrder"}}</button>
   </form>
+</template>
+
+<template name="x">
+            <h1><a href="{{ pathFor 'game' _id=this.store._id}}">{{ this.store.name }}</a></h1>
+</template>
+
+<template name="Mymove">
+
 </template>
