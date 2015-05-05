@@ -3,6 +3,9 @@
     <div class="row">
       <h1>Store: {{ store.name }}</h1>
       <a href="{{pathFor 'reviews' _id=this.store._id}}">{{_ "reviews"}}</a>
+      {{#if ownerCheck store._id currentUser._id}}
+         - <a href="{{pathFor 'settings' _id=this.store._id}}">Settings</a>
+      {{/if}}
     </div>
   </section>
   <section id="signOut">

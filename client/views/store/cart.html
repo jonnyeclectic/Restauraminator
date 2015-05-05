@@ -40,14 +40,22 @@
         {{/each}}
       </ul>
       <h2>{{_ "totalPrice"}}: ${{myTotal store._id currentUser._id}}</h2>
+      {{> tipCalculator}}
       {{> carryOrDelivery}}
       {{> cash}}
-        {{> game}}
+      {{> game}}
+      <form action="" method="POST" id="payment-form">
       {{#if cardPayment}}
-        {{> cash}}
-      {{else}}
-        {{> stripe}}
+        <label>
+          <span>Number of Cards</span>
+          <input class="numberOfCards" value="{{numberOfCards}}" type="number">
+        </label>
+        {{#each cards}}
+          {{> stripe}}
+        {{/each}}
       {{/if}}
+      <button type="submit">{{_ "placeOrder"}}</button>
+        </form>
     </div>
   </section>
     </section>
@@ -83,25 +91,22 @@
 
 <template name="cash">
     <label>
-        <input type="checkbox" class="cash">
+        <input type="checkbox" class="cash" checked>
         {{_ "Cash Payment"}}
     </label>
 </template>
 
-<template name="cashPayment">
-  <button type="submit">{{_ "placeOrder"}}</button>
-</template>
-
 <template name="stripe">
-    <form action="" method="POST" id="payment-form">
-        <span class="payment-errors"></span>
+  <fieldset>
+    <legend>Card {{index}}</legend>
+    <span class="payment-errors"></span>
 
-        <div class="form-row">
-            <label>
-                <span>Card Number</span>
-                <input type="text" size="20" data-stripe="number"/>
-            </label>
-        </div>
+    <div class="form-row">
+        <label>
+            <span>Card Number</span>
+            <input type="text" size="20" data-stripe="number"/>
+        </label>
+    </div>
 
     <div class="form-row">
       <label>
@@ -129,15 +134,23 @@
         </label>
       </div>
     </div>
+  </fieldset>
+</template>
 
-    <button type="submit">{{_ "placeOrder"}}</button>
+<template name="tipCalculator">
+  <form>
+    <fieldset>
+      <legend>Tip Calculator</legend>
+      <label>
+        <span>Percentage</span>
+        <input name="percentage" type="number">
+      </label>
+      <button type="submit">Calculate</button>
+      <label>
+        <span>Tip: ${{getTip store._id currentUser._id }} </span>
+      </label>
+      {{> alert}}
+    </fieldset>
   </form>
 </template>
 
-<template name="x">
-            <h1><a href="{{ pathFor 'game' _id=this.store._id}}">{{ this.store.name }}</a></h1>
-</template>
-
-<template name="Mymove">
-
-</template>

@@ -34,7 +34,25 @@
 
 <template name="order">
   <li>
-    {{timestamp}}
-    <button class="process">Change Status</button>
+    <div class="row">
+      <div class="large-12 columns">
+        <p>{{timestamp}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-7 columns">
+        <strong>{{paymentMethod}}</strong>
+        <br>
+        <a>See Details</a>
+      </div>
+      <div class="large-5 columns">
+        <h2>${{price}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <button class="process expand">Change Status</button>
+      </div>
+    </div>
   </li>
 </template>

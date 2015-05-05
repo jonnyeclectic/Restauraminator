@@ -7,15 +7,6 @@ UI.registerHelper('win', function(storeId, userId) {
     var playerCart = Collections.Carts.findOne({ storeId: storeId, userId: userId });
     console.log( playerCart.game);
     return playerCart.game;
-    /*console.log(userId);
-    if(userId != 213)
-        console.log(userId);
-    else
-        console.log("FAIL");
-    var start = {
-        game:    true
-    };
-    Meteor.call('game', start);*/
 });
 
 UI.registerHelper('myTotal', function(storeId, userId){
@@ -39,6 +30,12 @@ UI.registerHelper('lessThan', function(num1, num2) {
         return true;
     else
         return false;
+});
+
+UI.registerHelper('getTip', function(storeId, userId) {
+    var cart = Collections.Carts.findOne({ storeId: storeId, userId: userId});
+    var tip = cart.total * (cart.tipPercentage / 100);
+    return tip.toFixed(2);
 });
 
 UI.registerHelper('customerRedirect', function(isOwner) {
