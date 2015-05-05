@@ -38,7 +38,8 @@ Template.cart.events({
 
   'submit': function(event) {
     var order = {
-      timestamp: new Date()
+      cost: Session.get("counter"),
+      cards: Session.get("cash") > 0 ? 0 : Session.get("numberOfCards")
     };
 
     var cartOrder = {
