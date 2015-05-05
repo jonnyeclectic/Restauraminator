@@ -1,22 +1,24 @@
 <template name="cart" >
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script> <!-- load stripe API for payment-->
     <script type="text/javascript">Stripe.setPublishableKey('pk_test_jnIrg93sCpLc8tXMzgE14wLM');</script>
-    <section onmousemove="move(event)">
+    <section onmousemove="move(event)">         <!-- track mouse movement -->
     <section class="hero" id="win">
       <script> function move(e) {
     var x = e.clientX;
-    var y = e.clientY;
+    var y = e.clientY;                              //mouse coordinates <!-- -->
     var time = new Date();
     var xSpot = {{discount2 x}};
           console.log("xSpot:",xSpot);
     var ySpot = {{discount y}};
           console.log("ySpot:",ySpot);
           console.log("position:",x,y);
+
     //fv v vvar ySpot = {{discount y}}
-    if(x >= xSpot && x &lt; (xSpot + 150) && y>= ySpot && y&lt; (ySpot + 150))
+    if(x >= xSpot && x &lt; (xSpot + 150) && y>= ySpot && y&lt; (ySpot + 150))  //mouse found hidden discount
     {
         console.log("WINNER");
         document.getElementById("win").innerHTML = "YOU WON!";
+
     }
 }
       </script>
@@ -26,24 +28,24 @@
   </section>
   <section>
     <div class="row">
-      <h2>{{_ "menu"}} ({{ store.name}})</h2>
+        <h2>{{_ "menu"}} ({{ store.name}})</h2>                           <!-- display menu-->
       <ul>
         {{#each products}}
-          {{> addToMyCart}}
+          {{> addToMyCart}}                                             <!-- add product to cart in database-->
         {{/each}}
       </ul>
       <h2>{{_ "cart"}} ({{userIdentity currentUser._id}})</h2>
       <h2>{{_ "Points"}} ({{currentUser.points}})</h2>
       <ul>
         {{#each carts}}
-          {{> removeFromCart}}
+          {{> removeFromCart}}                                           <!-- remove product to cart in database-->
         {{/each}}
       </ul>
-      <h2>{{_ "totalPrice"}}: ${{myTotal store._id currentUser._id}}</h2>
-      {{> tipCalculator}}
-      {{> carryOrDelivery}}
-      {{> cash}}
-      {{> game}}
+        <h2>{{_ "totalPrice"}}: ${{myTotal store._id currentUser._id}}</h2>   <!-- total price of the cart -->
+        {{> tipCalculator}}                                                        <!-- calculate tip for total cart price -->
+        {{> carryOrDelivery}}                                                          <!-- carryout or not checkbox -->
+        {{> cash}}                                                                    <!--  cash or card checkbox -->
+        {{> game}}                                                                    <!-- Play! button for timer -->
       <form action="" method="POST" id="payment-form">
       {{#if cardPayment}}
         <label>
@@ -65,7 +67,7 @@
     <div>
         Try to win a discount! Click "Play!" for a chance to win 10% off your order. Try to find the hidden discount on the page by moving your cursor around the page within 10 seconds!
     </div>
-    <button class="play" onclick="setTimeout(function(){alert('Times Up')},10000);">Play!</button>
+    <button class="play" onclick="setTimeout(function(){alert('Times Up')},10000);">Play!</button> <!-- timer for 10 seconds so user can find discount. Updates database with discount -->
 </template>
 
 <template name="addToMyCart">
