@@ -36,6 +36,11 @@ Schemas.Carts = new SimpleSchema({
   myItem: {
     type: String,
     optional: true
+  },
+  tipPercentage: {
+    type: Number,
+    decimal: true,
+    optional: true
   }
 });
 
@@ -54,7 +59,8 @@ Meteor.methods({
       total: options.total,
       deliver: 1,
       cash:    1,
-      complete:1
+      complete:1,
+      tipPercentage: 0
     });
   }
 });
@@ -101,5 +107,12 @@ Meteor.methods({
             {storeId: storeID, userId: Meteor.userId()},
             {$set: {total: options.total.toFixed(2)} },
             {multi: true});
+    },
+    assignPercentage: function(options) {
+        var storeID = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
+        Collections.Carts.update(
+            {storeId: storeID, userId: Meteor.userId()},
+            {$set: {tipPercentage: options.percentage} }
+        );
     }
 });

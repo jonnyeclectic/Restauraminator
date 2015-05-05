@@ -21,6 +21,15 @@ Schemas.Orders = new SimpleSchema({
   },
   status: {
     type: String
+  },
+  cost: {
+    type: Number,
+    decimal: true,
+    optional: true
+  },
+  cards: {
+    type: Number,
+    optional: true
   }
 });
 
@@ -34,9 +43,11 @@ Meteor.methods({
     var storeId = Collections.Stores.findOne({ owner: Meteor.userId() })._id;
     Collections.Orders.insert({
       storeId: storeId,
-      timestamp: options.timestamp,
+      timestamp: new Date(),
       userId: Meteor.userId(),
-      status: statusValues[0]
+      status: statusValues[0],
+      cost: options.cost,
+      cards: options.cards
     });
   },
 

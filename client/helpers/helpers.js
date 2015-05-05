@@ -26,9 +26,16 @@ UI.registerHelper('lessThan', function(num1, num2) {
         return false;
 });
 
+UI.registerHelper('getTip', function(storeId, userId) {
+    var cart = Collections.Carts.findOne({ storeId: storeId, userId: userId});
+    var tip = cart.total * (cart.tipPercentage / 100);
+    return tip.toFixed(2);
+});
+
 UI.registerHelper('customerRedirect', function(isOwner) {
     /*if (isOwner)
         return false;
     else*/
         Router.go('store');
 });
+

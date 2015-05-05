@@ -1,9 +1,54 @@
+Session.setDefault("numberOfCards", 1);
+Session.setDefault("cards", [{ index: 1 }]);
+
 Template.cart.helpers({
   cardPayment: function() {
     if (Session.get("cash") > 0)
       return false;
     else
       return true;
+  },
+
+  numberOfCards: function() {
+    return Session.get("numberOfCards");
+  },
+
+  cards: function() {
+    return Session.get("cards");
+  },
+
+  lastCard: function() {
+    if (this.index == Session.get("numberOfCards")) {
+      return true;
+    }
+    return false;
+  }
+});
+
+Template.cart.events({
+  'click .numberOfCards': function(event) {
+    Session.set("numberOfCards", event.target.value);
+    var cards = [];
+    var n = Session.get("numberOfCards");
+    for (var i = 1; i <= n; i++) {
+      cards.push({ index: i });
+    };
+    Session.set("cards", cards);
+  },
+
+  'submit': function(event) {
+    var order = {
+      cost: Session.get("counter"),
+      cards: Session.get("cash") > 0 ? 0 : Session.get("numberOfCards")
+    };
+
+    var cartOrder = {
+        complete: 0
+    }
+
+    Session.set("counter", 0);
+    Meteor.call('addOrder', order);
+    Meteor.call('complete', cartOrder);
   }
 });
 
@@ -94,18 +139,12 @@ Template.cash.events({
     }
 });
 
-Template.stripe.events({
+Template.tipCalculator.events({
   'submit': function(event) {
-    var order = {
-      timestamp: new Date()
+    var tip = {
+      percentage: event.target.percentage.value.trim()
     };
-
-    var cartOrder = {
-        complete: 0
-    }
-
-    Session.set("counter", 0);
-    Meteor.call('addOrder', order);
-    Meteor.call('complete', cartOrder);
+    Meteor.call('assignPercentage', tip);                            //resets page after submit
+    return false;
   }
 });

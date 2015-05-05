@@ -1,0 +1,25 @@
+h1 {
+  text-align: center;
+}
+
+h2 {
+  color: #af2324;
+}
+
+#loading-message {
+  margin: 0;
+  text-align: center;
+}
+
+#nprogress .bar {
+  background: #af2324;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #af2324, 0 0 5px #af2324;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #af2324;
+  border-left-color: #af2324;
+}
