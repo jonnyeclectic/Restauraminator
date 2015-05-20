@@ -52,56 +52,8 @@
   </section>
 </template>
 <head>
-  <!--  
-    <script type="text/javascript" src="http://output97.rssinclude.com/output?type=js&amp;id=988943&amp;hash=37326f52ccad45c3eb3cc9ff0904c216"></script>
--->
-  <!-- Layout -->
-  <div class="container">
-    <div class="row">
-      <h1>BBC Headlines</h1>
-        <link rel="stylesheet" href="css/vendor/bootstrap.min.css">
-        <link rel="stylesheet" href="css/vendor/nprogress.css"/>
-        <link rel="stylesheet" href="css/style.css"/>
-          <!-- Assets -->
-  <script src="js/vendor/jquery-1.11.2.min.js"></script>
-  <script src="js/vendor/underscore-min.js"></script>
-  <script src="js/vendor/backbone-min.js"></script>
-  <script src="js/vendor/jquery.xdomainajax.js"></script>
-  <script src="js/vendor/nprogress.min.js"></script>
-  <script src="js/script.js"></script>
-    </div>
-    <div class="jumbotron">
-      <div class="row" id="category-list">
-        <!-- this area is replaced once headlines are loaded -->
-        <div class="col-md-12" margin-left="20px">
-            <div align="center">
-              <script type="text/javascript" src="http://output21.rssinclude.com/output?type=js&amp;id=988943&amp;hash=37326f52ccad45c3eb3cc9ff0904c216"></script>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Templates (Underscore) -->
-  <script type="text/template" id="category-list-template">
-    <% _.each(categories, function(category) { %>
-      <div class="col-md-3 heading-list">
-        <h2><%= category.name %></h2>
-        <%= _.template($("#heading-list-template").html())({ headings: category.headings }) %>
-      </div>
-    <% }); %>
-  </script>
 
-  <script type="text/template" id="heading-list-template">
-    <ol>
-      <% _.each(headings, function(heading) { %>
-        <li><%= heading %></li>
-      <% }); %>
-    </ol>
-  </script>
-
-<!-- END CODE -->
-  
 </head>
 <template name="product">
   <li>
